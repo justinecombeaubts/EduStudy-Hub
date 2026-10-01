@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "titre": "Les sources du droit administratif",
+    "ue": "UE1 Droit",
+    "theme": "Droit administratif",
+    "statut": "Rédigée",
+    "date": "2026-08-20",
+    "contenu": "Distinction entre sources écrites (Constitution, lois, règlements) et sources non écrites (jurisprudence du Conseil d'État, principes généraux du droit). Place croissante des sources européennes dans la hiérarchie."
+  },
+  {
+    "id": 2,
+    "titre": "La hiérarchie des normes",
+    "ue": "UE1 Droit",
+    "theme": "Droit constitutionnel",
+    "statut": "À repasser",
+    "date": "2026-08-18",
+    "contenu": "Pyramide de Kelsen : bloc de constitutionnalité, traités internationaux, lois organiques, lois ordinaires, règlements. Revoir le contrôle de conventionnalité et son articulation avec le contrôle de constitutionnalité."
+  },
+  {
+    "id": 3,
+    "titre": "Le contrat de travail : formation et rupture",
+    "ue": "UE1 Droit",
+    "theme": "Droit du travail",
+    "statut": "Brouillon",
+    "date": "2026-08-25",
+    "contenu": "Conditions de validité du contrat, période d'essai, principaux modes de rupture (démission, licenciement, rupture conventionnelle). Notes à compléter avec les délais de préavis."
+  },
+  {
+    "id": 4,
+    "titre": "Les états financiers : bilan et compte de résultat",
+    "ue": "UE2 Finance",
+    "theme": "Comptabilité générale",
+    "statut": "Rédigée",
+    "date": "2026-08-15",
+    "contenu": "Le bilan présente le patrimoine (actif/passif) à une date donnée, le compte de résultat retrace les flux (charges/produits) sur une période. Lien entre résultat net et variation des capitaux propres."
+  },
+  {
+    "id": 5,
+    "titre": "Calcul du coût du capital (WACC)",
+    "ue": "UE2 Finance",
+    "theme": "Finance d'entreprise",
+    "statut": "À repasser",
+    "date": "2026-08-22",
+    "contenu": "Moyenne pondérée du coût des fonds propres et du coût de la dette, pondérée par leur poids respectif dans le financement. Revoir la formule du MEDAF pour le coût des fonds propres."
+  },
+  {
+    "id": 6,
+    "titre": "Le mix marketing : les 4P",
+    "ue": "UE3 Marketing",
+    "theme": "Marketing fondamental",
+    "statut": "Rédigée",
+    "date": "2026-08-10",
+    "contenu": "Produit, Prix, Distribution (Place) et Communication (Promotion) : les quatre leviers classiques du marketing opérationnel. Extension possible aux 7P pour les services (Personnel, Processus, Preuve physique)."
+  },
+  {
+    "id": 7,
+    "titre": "Étude de marché : méthodes qualitatives",
+    "ue": "UE3 Marketing",
+    "theme": "Études de marché",
+    "statut": "Brouillon",
+    "date": "2026-08-27",
+    "contenu": "Entretiens individuels, focus groups, observation participante. Notes à structurer : avantages/limites de chaque méthode et complémentarité avec les approches quantitatives."
+  },
+  {
+    "id": 8,
+    "titre": "Le modèle client-serveur et les requêtes HTTP",
+    "ue": "UE4 Dev Web",
+    "theme": "Architecture web",
+    "statut": "Rédigée",
+    "date": "2026-08-12",
+    "contenu": "Le client envoie une requête HTTP (GET, POST, PUT, DELETE) à un serveur qui répond avec un code de statut et un contenu. Rappel des codes 2xx, 3xx, 4xx et 5xx les plus courants."
+  },
+  {
+    "id": 9,
+    "titre": "Les bases de CSS Flexbox et Grid",
+    "ue": "UE4 Dev Web",
+    "theme": "Front-end",
+    "statut": "À repasser",
+    "date": "2026-08-19",
+    "contenu": "Flexbox pour les alignements sur un axe, Grid pour les mises en page bidimensionnelles. Revoir les propriétés justify-content, align-items et grid-template-columns."
+  },
+  {
+    "id": 10,
+    "titre": "Introduction aux API REST",
+    "ue": "UE4 Dev Web",
+    "theme": "Back-end",
+    "statut": "Brouillon",
+    "date": "2026-08-28",
+    "contenu": "Principes REST : ressources identifiées par une URL, verbes HTTP standards, réponses le plus souvent en JSON. À compléter avec des exemples concrets d'endpoints."
+  }
+]

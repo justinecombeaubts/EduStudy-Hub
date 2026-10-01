@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Inter:wght@400;500;600&family=Source+Code+Pro&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DA (voir CLAUDE.md) : bordeaux/argent/rose nude, clair ↔ sombre par variables CSS. */
+:root {
+  --bg: #f4f4f6;
+  --surface: #ffffff;
+  --surface-muted: #ebebee;
+  --border: #dcdce1;
+  --text: #57303b;
+  --heading: #3a1521;
+  --muted: #6f5f66;
+  --accent: #8f5159;
+  --accent-soft: #e2baac;
+  --on-accent: #2a0f17;
+}
+
+:root.dark {
+  --bg: #2a0f17;
+  --surface: #3a1620;
+  --surface-muted: rgba(228, 229, 234, 0.08);
+  --border: rgba(228, 229, 234, 0.1);
+  --text: #ebebee;
+  --heading: #e4e5ea;
+  --muted: #a3a4ad;
+  --accent: #e2baac;
+  --accent-soft: #e2baac;
+  --on-accent: #2a0f17;
+}
+
+@layer base {
+  body {
+    @apply bg-app text-body font-sans;
+    background-image:
+      radial-gradient(600px circle at 0% 0%, rgb(226 186 172 / 22%), transparent 60%),
+      radial-gradient(600px circle at 100% 0%, rgb(42 15 23 / 12%), transparent 60%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}

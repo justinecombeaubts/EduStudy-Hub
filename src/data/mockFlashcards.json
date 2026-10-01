@@ -1,0 +1,51 @@
+[
+  {
+    "id": "deck-seed-1",
+    "titre": "Hiérarchie des normes — l'essentiel",
+    "ue": "UE1 Droit",
+    "theme": "Droit constitutionnel",
+    "courseId": null,
+    "sourceFicheIds": [],
+    "cards": [
+      {
+        "id": "card-1",
+        "question": "Que place-t-on au sommet de la pyramide de Kelsen ?",
+        "reponse": "Le bloc de constitutionnalité (Constitution, préambule, DDHC, principes fondamentaux)."
+      },
+      {
+        "id": "card-2",
+        "question": "Quel contrôle vérifie la conformité d'une loi à un traité international ?",
+        "reponse": "Le contrôle de conventionnalité (exercé par le juge ordinaire, pas le Conseil constitutionnel)."
+      },
+      {
+        "id": "card-3",
+        "question": "Quelle institution exerce le contrôle de constitutionnalité a priori ?",
+        "reponse": "Le Conseil constitutionnel, avant la promulgation de la loi."
+      }
+    ],
+    "generatedByAI": true,
+    "createdAt": "2026-08-29T10:00:00.000Z"
+  },
+  {
+    "id": "deck-seed-2",
+    "titre": "Bilan comptable — vocabulaire de base",
+    "ue": "UE2 Finance",
+    "theme": "Comptabilité générale",
+    "courseId": null,
+    "sourceFicheIds": [],
+    "cards": [
+      {
+        "id": "card-1",
+        "question": "Que présente le bilan comptable ?",
+        "reponse": "Le patrimoine de l'entreprise (actif et passif) à un instant T."
+      },
+      {
+        "id": "card-2",
+        "question": "Quelle est la différence entre l'actif et le passif ?",
+        "reponse": "L'actif = ce que l'entreprise possède ; le passif = ce qu'elle doit (dettes + capitaux propres)."
+      }
+    ],
+    "generatedByAI": false,
+    "createdAt": "2026-08-27T09:00:00.000Z"
+  }
+]

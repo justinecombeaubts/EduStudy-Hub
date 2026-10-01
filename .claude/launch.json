@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "edustudy-hub-dev",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": ["node_modules/vite/bin/vite.js", "--port", "5183", "--strictPort"],
+      "port": 5183
+    },
+    {
+      "name": "edustudy-hub-dev-full",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": ["node_modules/netlify-cli/bin/run.js", "dev"],
+      "port": 8888
+    }
+  ]
+}
