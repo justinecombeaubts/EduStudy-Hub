@@ -1,5 +1,6 @@
 import { CalendarDays, BookOpen, Library, FolderCheck, GraduationCap, Sun, Moon } from 'lucide-react'
 import { useTheme } from '../utils/useTheme'
+import CercleInvocation from './shared/CercleInvocation'
 
 const NAV_ITEMS = [
   { key: 'agenda', label: 'Agenda', icon: CalendarDays },
@@ -26,8 +27,8 @@ function Sidebar({ activeItem, onSelect, onOpenSakura }) {
         <span className="hidden md:inline font-heading font-bold text-heading">EduStudy Hub</span>
       </div>
 
-      <nav className="relative flex-1 px-2 md:px-3 py-4 space-y-1">
-        <div className="motif-menu absolute inset-x-0 top-0 h-56" aria-hidden="true" />
+      <nav className="relative overflow-hidden flex-1 px-2 md:px-3 py-4 space-y-1">
+        <CercleInvocation className="motif-menu absolute left-0 top-0 w-64 h-64" />
         {NAV_ITEMS.map(({ key, label, icon: Icon }) => {
           const active = activeItem === key
           return (
