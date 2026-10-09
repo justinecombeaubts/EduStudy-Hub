@@ -6,6 +6,7 @@ import AgendaView from './components/AgendaView'
 import StudyView from './components/StudyView'
 import DictionaryView from './components/DictionaryView'
 import LivrablesView from './components/LivrablesView'
+import ReleveView from './components/ReleveView'
 import SakuraAssistant from './components/sakura/SakuraAssistant'
 import mockNotes from './data/mockNotes.json'
 import mockFlashcards from './data/mockFlashcards.json'
@@ -31,7 +32,7 @@ const FILTER_TYPES_AGENDA = ['Tout', 'Cours', 'UE']
 const FILTER_TYPES_STUDY = ['Tout', 'Cours', 'UE', 'Thème']
 const FILTER_TYPES_LIVRABLES = ['Tout', 'Cours', 'UE']
 
-const TITRES = { agenda: 'Agenda', 'coin-study': 'Coin Study', dictionnaire: 'Dictionnaire', livrables: 'Exercices & Livrables' }
+const TITRES = { agenda: 'Agenda', 'coin-study': 'Coin Study', dictionnaire: 'Dictionnaire', livrables: 'Exercices & Livrables', releve: 'Notes & Observations' }
 
 function App() {
   const [activeItem, setActiveItem] = useState('agenda')
@@ -41,6 +42,7 @@ function App() {
   const isAgenda = activeItem === 'agenda'
   const isDictionnaire = activeItem === 'dictionnaire'
   const isLivrables = activeItem === 'livrables'
+  const isReleve = activeItem === 'releve'
 
   // Fiches : un seul store pour l'Agenda et le Coin Study (même donnée, voir migrateFiches.js).
   // Persistées en BDD Supabase (cross-device), avec repli/cache LocalStorage automatique en cas
@@ -59,6 +61,8 @@ function App() {
   const { courses, affecterCours, enregistrerEvenement, supprimerEvenement } = usePlanning()
   // Espace Exercices & Livrables : rendus saisis par l'étudiant (aucune IA).
   const [livrables, setLivrables] = useSupabaseStore('livrables', [])
+  // Relevé de notes (Notes & Observations) : évaluations saisies par l'étudiant (aucune IA).
+  const [evaluations, setEvaluations] = useSupabaseStore('releve', [])
   // `sakuraRequest` unifie 3 façons d'ouvrir Sakura depuis une fiche (AUDIT.md J4 — retour
   // formateur "flashcards/QCM accessibles depuis la fiche sans repasser par l'agent") : générer de
   // nouvelles flashcards (seul cas qui a réellement besoin du panel — appel IA), ou aller directement
@@ -97,7 +101,7 @@ function App() {
     setFilterValue(null)
   }, [activeItem])
 
-  const availableFilterTypes = isAgenda ? FILTER_TYPES_AGENDA : isLivrables ? FILTER_TYPES_LIVRABLES : FILTER_TYPES_STUDY
+  const availableFilterTypes = isAgenda ? FILTER_TYPES_AGENDA : isLivrables || isReleve ? FILTER_TYPES_LIVRABLES : FILTER_TYPES_STUDY
   // Charge de la semaine réelle en cours (créneaux remplis ou non).
   const coursesCetteSemaine = useMemo(() => getCoursesInWeek(new Date(), courses).length, [courses])
   // Dictionnaire (AUDIT.md J2 Tâche 6) : compte les définitions déjà extraites par l'Écriture
@@ -109,14 +113,14 @@ function App() {
 
   const filterValueOptions = useMemo(() => {
     if (filterType === 'UE') {
-      const source = isAgenda ? courses : isLivrables ? livrables : fiches
+      const source = isAgenda ? courses : isLivrables ? livrables : isReleve ? evaluations : fiches
       return Array.from(new Set(source.map((item) => item.ue).filter(Boolean))).sort()
     }
     if (filterType === 'Thème' && !isAgenda) {
       return Array.from(new Set(fiches.filter((f) => f.theme).map((item) => item.theme))).sort()
     }
     return []
-  }, [filterType, isAgenda, isLivrables, fiches, courses, livrables])
+  }, [filterType, isAgenda, isLivrables, isReleve, fiches, courses, livrables, evaluations])
 
   function handleFilterTypeChange(type) {
     setFilterType(type)
@@ -137,6 +141,8 @@ function App() {
                 ? `${totalDefinitions} définitions au total`
                 : isLivrables
                   ? `${livrables.length} rendu(s) rangé(s)`
+                  : isReleve
+                    ? `${evaluations.length} note(s) au relevé`
                   : `${fiches.length} fiches au total`
           }
           search={search}
@@ -165,6 +171,14 @@ function App() {
                 onDeleteEvenement={supprimerEvenement}
               />
             </>
+          ) : isReleve ? (
+            <ReleveView
+              search={search}
+              filterType={filterType}
+              filterValue={filterValue}
+              evaluations={evaluations}
+              onEvaluationsChange={setEvaluations}
+            />
           ) : isLivrables ? (
             <LivrablesView
               search={search}

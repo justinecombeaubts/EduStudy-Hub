@@ -1,4 +1,4 @@
-import { CalendarDays, BookOpen, Library, FolderCheck, GraduationCap, Sun, Moon } from 'lucide-react'
+import { CalendarDays, BookOpen, Library, FolderCheck, Award, GraduationCap, Sun, Moon } from 'lucide-react'
 import { useTheme } from '../utils/useTheme'
 import CercleInvocation from './shared/CercleInvocation'
 
@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { key: 'coin-study', label: 'Coin Study', icon: BookOpen },
   { key: 'dictionnaire', label: 'Dictionnaire', icon: Library },
   { key: 'livrables', label: 'Exercices & Livrables', icon: FolderCheck },
+  { key: 'releve', label: 'Notes & Observations', icon: Award },
 ]
 
 const BOUTON_SECONDAIRE =

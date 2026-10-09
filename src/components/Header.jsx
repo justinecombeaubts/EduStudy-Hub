@@ -1,4 +1,5 @@
 import { Search, Sparkles, X } from 'lucide-react'
+import Horloge from './Horloge'
 
 // En-tête : titre de page, recherche globale + filtres avancés (type + valeur), badge de statut.
 // Purement contrôlé par le parent (App.jsx) — pas de logique de filtrage ici.
@@ -74,7 +75,9 @@ function Header({
         )}
       </div>
 
-      <span className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-peach-100 text-orange-800 text-xs font-medium shrink-0">
+      <Horloge />
+
+      <span className="items-center gap-1.5 px-3 py-1.5 rounded-full bg-peach-100 text-orange-800 text-xs font-medium shrink-0 hidden xl:inline-flex">
         <Sparkles className="w-3.5 h-3.5" />
         {badgeText}
       </span>

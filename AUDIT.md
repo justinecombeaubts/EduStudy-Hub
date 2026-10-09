@@ -978,3 +978,10 @@ Discutées mais pas encore transformées en tâches — à valider avec l'utilis
 - [x] **DA cozy** : typo Quicksand/Nunito, barres en verre dépoli, motif fleurs/étincelles en fond (couleurs inchangées).
 
 **À faire par l'utilisateur :** exécuter `supabase/add-creneaux-livrables.sql` dans Supabase (sinon `creneaux`/`livrables` restent en LocalStorage seul, sans synchro cross-device).
+
+## Tâche 2026-10-09 (suite) — Date/heure + Notes & Observations
+
+- [x] **Date et heure** en direct dans l'en-tête (`Horloge.jsx`), version courte sur petits écrans.
+- [x] **Notes & Observations** : relevé de notes par UE (note / barème / coefficient, type d'épreuve, date, observation), moyennes pondérées sur 20 par UE et générale, épreuves "à venir" exclues des moyennes. Store `releve`. Aucune IA.
+
+**À faire par l'utilisateur :** exécuter `supabase/add-releve.sql` dans Supabase.

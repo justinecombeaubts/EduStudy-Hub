@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js'
 // Même contrat : seule cette fonction détient la clé Supabase "service_role" (variables d'env
 // SANS préfixe VITE_, jamais injectées dans le bundle navigateur). Le front ne parle jamais
 // directement à Supabase, il passe uniquement par /api/data.
-const ALLOWED_TABLES = ['fiches', 'flashcards', 'qcm', 'creneaux', 'livrables', 'evenements']
+const ALLOWED_TABLES = ['fiches', 'flashcards', 'qcm', 'creneaux', 'livrables', 'evenements', 'releve']
 
 // .trim() défensif : une variable d'env Vercel collée avec un BOM UTF-8 en tête (fréquent en
 // copiant depuis un fichier édité sous Windows) fait planter fetch/Supabase avec une erreur
