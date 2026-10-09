@@ -26,7 +26,8 @@ function Sidebar({ activeItem, onSelect, onOpenSakura }) {
         <span className="hidden md:inline font-heading font-bold text-heading">EduStudy Hub</span>
       </div>
 
-      <nav className="flex-1 px-2 md:px-3 py-4 space-y-1">
+      <nav className="relative flex-1 px-2 md:px-3 py-4 space-y-1">
+        <div className="motif-menu absolute inset-x-0 top-0 h-56" aria-hidden="true" />
         {NAV_ITEMS.map(({ key, label, icon: Icon }) => {
           const active = activeItem === key
           return (
@@ -35,7 +36,7 @@ function Sidebar({ activeItem, onSelect, onOpenSakura }) {
               type="button"
               onClick={() => onSelect(key)}
               title={label}
-              className={`w-full flex items-center justify-center md:justify-start gap-3 px-3 py-2 rounded-2xl text-sm font-semibold transition-colors ${
+              className={`relative w-full flex items-center justify-center md:justify-start gap-3 px-3 py-2 rounded-2xl text-sm font-semibold transition-colors ${
                 active ? 'bg-rose-100 text-rose-800 shadow-sm' : 'text-muted hover:bg-rose-50 hover:text-rose-700'
               }`}
               aria-current={active ? 'page' : undefined}
