@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Plus, GraduationCap, Sparkle, CheckCircle2, XCircle, Hourglass, Link2, Paperclip } from 'lucide-react'
 import ActiviteEctsModal from './ActiviteEctsModal'
-import { calculerEcts, formatEcts, nouvelleActivite, SEUIL_VALIDATION } from '../../utils/ects'
+import catalogueCours from '../../data/catalogueCours.json'
+import { calculerEcts, ectsParDefaut, formatEcts, nouvelleActivite, SEUIL_VALIDATION } from '../../utils/ects'
 import { formatMoyenne, niveau } from '../../utils/releve'
 import { getUeStyle } from '../../utils/ueColors'
 
@@ -10,6 +11,8 @@ const STATUT = {
   non_validee: { label: 'Non validée', icon: XCircle, style: 'text-red-600' },
   attente: { label: 'En attente de notes', icon: Hourglass, style: 'text-muted' },
 }
+
+const DEFAUTS = ectsParDefaut(catalogueCours) // 1 cours du catalogue = 1 ECTS
 
 const formatDate = (iso) =>
   iso ? new Date(`${iso}T00:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Sans date'
@@ -43,9 +46,12 @@ function ChampEcts({ valeur, onCommit, label, className = '' }) {
 function EctsPanel({ ues, items, evaluations, onItemsChange }) {
   const [enEdition, setEnEdition] = useState(null) // { activite, estNouvelle }
   const [nouvelleUe, setNouvelleUe] = useState('')
-  const calc = calculerEcts(ues, items, evaluations)
+  const calc = calculerEcts(ues, items, evaluations, DEFAUTS)
   const progression = Math.min((calc.acquisUe / calc.objectif) * 100, 100)
   const anneeValidee = calc.acquisUe >= calc.objectif
+  const progressionTotal = Math.min((calc.total / calc.objectifTotal) * 100, 100)
+  const diplomeValide = calc.total >= calc.objectifTotal
+  const config = items.find((i) => i.kind === 'config') ?? { id: 'config', kind: 'config' }
 
   function upsert(item) {
     onItemsChange(items.some((i) => i.id === item.id) ? items.map((i) => (i.id === item.id ? item : i)) : [...items, item])
@@ -89,7 +95,7 @@ function EctsPanel({ ues, items, evaluations, onItemsChange }) {
             <ChampEcts
               valeur={calc.objectif}
               label="Objectif d'ECTS de l'année"
-              onCommit={(n) => upsert({ id: 'config', kind: 'config', objectif: n || 52 })}
+              onCommit={(n) => upsert({ ...config, objectif: n || 52 })}
             />
           </label>
         </div>
@@ -110,16 +116,50 @@ function EctsPanel({ ues, items, evaluations, onItemsChange }) {
         </div>
         {calc.totalUeConfigure < calc.objectif && (
           <p className="text-xs text-orange-700">
-            Les ECTS renseignés sur tes UE ({formatEcts(calc.totalUeConfigure)}) n'atteignent pas l'objectif : complète les valeurs ci-dessous à partir de ta maquette.
+            Les ECTS de tes UE ({formatEcts(calc.totalUeConfigure)}) n'atteignent pas l'objectif : le catalogue ne liste pas encore tous tes cours. Ajuste les valeurs ci-dessous à partir de ta maquette.
           </p>
         )}
+      </section>
+
+      {/* Objectif diplôme : UE + activités */}
+      <section className="bg-surface rounded-3xl border border-line shadow-cozy p-5 space-y-3">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-xs text-muted">🎓 Total pour valider tes études (compétences + activités)</p>
+            <p className="font-heading font-bold text-heading leading-tight">
+              <span className={`text-3xl ${diplomeValide ? 'text-green-600' : ''}`}>{formatEcts(calc.total)}</span>
+              <span className="text-lg text-muted"> / {formatEcts(calc.objectifTotal)} ECTS</span>
+            </p>
+            <p className="text-xs text-muted">
+              {formatEcts(calc.acquisUe)} de compétences + {formatEcts(calc.ectsActivites)} d'activités
+            </p>
+          </div>
+          <label className="flex items-center gap-2 text-xs text-muted">
+            Objectif diplôme
+            <ChampEcts
+              valeur={calc.objectifTotal}
+              label="Objectif d'ECTS pour valider les études"
+              onCommit={(n) => upsert({ ...config, objectifTotal: n || 60 })}
+            />
+          </label>
+        </div>
+        <div className="h-3 rounded-full bg-surface-muted overflow-hidden flex" role="progressbar" aria-valuenow={calc.total} aria-valuemin={0} aria-valuemax={calc.objectifTotal}>
+          <div className="h-full bg-rose-300 transition-all" style={{ width: `${Math.min((calc.acquisUe / calc.objectifTotal) * 100, 100)}%` }} />
+          <div className="h-full bg-orange-400 transition-all" style={{ width: `${Math.max(progressionTotal - (calc.acquisUe / calc.objectifTotal) * 100, 0)}%` }} />
+        </div>
+        <p className="text-sm text-body">
+          {diplomeValide ? '🎉 Tu as tous les ECTS nécessaires pour valider tes études !' : `Encore ${formatEcts(calc.restantTotal)} ECTS au total pour valider tes études.`}
+        </p>
       </section>
 
       {/* ECTS par UE */}
       <section className="bg-surface rounded-3xl border border-line shadow-cozy overflow-hidden">
         <header className="px-5 py-3 border-b border-line bg-rose-50/60">
           <h3 className="font-semibold text-heading">ECTS par UE</h3>
-          <p className="text-xs text-muted">Saisis le nombre d'ECTS de chaque UE ; ils sont acquis dès que la moyenne de l'UE atteint {SEUIL_VALIDATION}/20.</p>
+          <p className="text-xs text-muted">
+            1 cours = 1 ECTS (pré-rempli d'après le catalogue, modifiable). Si la moyenne de l'UE atteint {SEUIL_VALIDATION}/20, tu obtiens
+            tous ses ECTS — même avec un cours sous 10, rattrapé par les autres (compensation).
+          </p>
         </header>
         <ul className="divide-y divide-rose-50">
           {calc.lignes.map((l) => {
