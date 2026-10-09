@@ -984,4 +984,6 @@ Discutées mais pas encore transformées en tâches — à valider avec l'utilis
 - [x] **Date et heure** en direct dans l'en-tête (`Horloge.jsx`), version courte sur petits écrans.
 - [x] **Notes & Observations** : relevé de notes par UE (note / barème / coefficient, type d'épreuve, date, observation), moyennes pondérées sur 20 par UE et générale, épreuves "à venir" exclues des moyennes. Store `releve`. Aucune IA.
 
-**À faire par l'utilisateur :** exécuter `supabase/add-releve.sql` dans Supabase.
+- [x] **Suivi ECTS** (onglet ECTS) : objectif annuel (52 par défaut, modifiable) atteint avec les ECTS des UE validées (moyenne ≥ 10/20) ; ECTS par UE saisis à la main, UE manquantes ajoutables ; ECTS d'activités de l'école ajoutés via formulaire avec justification obligatoire, comptés à part (hors objectif). Store `ects`.
+
+**À faire par l'utilisateur :** exécuter `supabase/add-releve.sql` (tables `releve` + `ects`) dans Supabase.

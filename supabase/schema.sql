@@ -72,3 +72,11 @@ create table if not exists public.releve (
 );
 
 alter table public.releve enable row level security;
+
+create table if not exists public.ects (
+  id text primary key,
+  data jsonb not null,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.ects enable row level security;

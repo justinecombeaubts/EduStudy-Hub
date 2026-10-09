@@ -63,6 +63,8 @@ function App() {
   const [livrables, setLivrables] = useSupabaseStore('livrables', [])
   // Relevé de notes (Notes & Observations) : évaluations saisies par l'étudiant (aucune IA).
   const [evaluations, setEvaluations] = useSupabaseStore('releve', [])
+  // Suivi ECTS : ECTS par UE, objectif annuel, ECTS d'activités (voir utils/ects.js).
+  const [ectsItems, setEctsItems] = useSupabaseStore('ects', [])
   // `sakuraRequest` unifie 3 façons d'ouvrir Sakura depuis une fiche (AUDIT.md J4 — retour
   // formateur "flashcards/QCM accessibles depuis la fiche sans repasser par l'agent") : générer de
   // nouvelles flashcards (seul cas qui a réellement besoin du panel — appel IA), ou aller directement
@@ -178,6 +180,8 @@ function App() {
               filterValue={filterValue}
               evaluations={evaluations}
               onEvaluationsChange={setEvaluations}
+              ectsItems={ectsItems}
+              onEctsChange={setEctsItems}
             />
           ) : isLivrables ? (
             <LivrablesView

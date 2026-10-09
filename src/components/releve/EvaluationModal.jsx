@@ -6,14 +6,15 @@ const CHAMP =
   'w-full px-3 py-2 rounded-xl bg-app border border-line text-sm text-heading placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-rose-300'
 
 // Modale de création/édition d'une note du relevé (note, barème, coefficient, observation).
-function EvaluationModal({ open, evaluation, estNouvelle, catalogue, onClose, onSave, onDelete }) {
+// `ues` (optionnel) : liste complète des UE proposées (catalogue + UE ajoutées à la main).
+function EvaluationModal({ open, evaluation, estNouvelle, catalogue, ues, onClose, onSave, onDelete }) {
   const [mounted, setMounted] = useState(open)
   const [visible, setVisible] = useState(false)
   const [form, setForm] = useState(evaluation)
   const [erreur, setErreur] = useState(null)
   const [confirmingDelete, setConfirmingDelete] = useState(false)
 
-  const ueOptions = Array.from(new Set(catalogue.map((c) => c.ue)))
+  const ueOptions = ues ?? Array.from(new Set(catalogue.map((c) => c.ue)))
   const coursDeLUe = catalogue.filter((c) => !form?.ue || c.ue === form.ue)
 
   useEffect(() => {

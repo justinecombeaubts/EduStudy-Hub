@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Plus, Award, MessageSquareQuote } from 'lucide-react'
 import catalogueCours from '../data/catalogueCours.json'
 import EvaluationModal from './releve/EvaluationModal'
+import EctsPanel from './releve/EctsPanel'
 import { matchesSearch } from '../utils/searchFilter'
 import { getUeStyle } from '../utils/ueColors'
 import { nouvelleEvaluation, moyenne, surVingt, formatMoyenne, niveau } from '../utils/releve'
@@ -12,9 +13,20 @@ const formatDate = (iso) =>
   iso ? new Date(`${iso}T00:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'
 
 // Espace "Notes & Observations" : relevé de notes saisi par l'étudiant, regroupé par UE, avec
-// moyennes pondérées (sur 20) et une observation / appréciation par note. Aucune IA.
-function ReleveView({ search, filterType, filterValue, evaluations, onEvaluationsChange }) {
+// moyennes pondérées (sur 20) et une observation / appréciation par note. Onglet ECTS : suivi de
+// l'objectif annuel (UE validées à ≥ 10/20) + ECTS d'activités à part (voir utils/ects.js). Aucune IA.
+function ReleveView({ search, filterType, filterValue, evaluations, onEvaluationsChange, ectsItems, onEctsChange }) {
   const [enEdition, setEnEdition] = useState(null) // { evaluation, estNouvelle }
+  const [onglet, setOnglet] = useState('notes')
+  // UE suivies en ECTS : catalogue (hors Bootcamp) + UE ajoutées à la main (onglet ECTS) + UE du relevé.
+  const uesManuelles = ectsItems.filter((i) => i.kind === 'ue').map((i) => i.ue)
+  const uesEcts = Array.from(
+    new Set([
+      ...catalogueCours.map((c) => c.ue).filter((ue) => ue.startsWith('UE')),
+      ...uesManuelles,
+      ...evaluations.map((e) => e.ue).filter(Boolean),
+    ])
+  ).sort((a, b) => a.localeCompare(b, 'fr', { numeric: true }))
 
   const visibles = evaluations.filter((e) => matchesSearch(e, { search, filterType, filterValue }, EVAL_FIELDS))
   const parUe = new Map()
@@ -40,8 +52,38 @@ function ReleveView({ search, filterType, filterValue, evaluations, onEvaluation
     setEnEdition(null)
   }
 
+  const onglets = (
+    <div className="inline-flex gap-1 p-1 rounded-2xl bg-surface border border-line">
+      {[
+        { key: 'notes', label: '📊 Notes' },
+        { key: 'ects', label: '🎓 ECTS' },
+      ].map(({ key, label }) => (
+        <button
+          key={key}
+          type="button"
+          onClick={() => setOnglet(key)}
+          className={`px-4 py-1.5 rounded-xl text-sm font-semibold transition-colors ${
+            onglet === key ? 'bg-rose-300 text-on-accent' : 'text-muted hover:bg-rose-50 hover:text-rose-700'
+          }`}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  )
+
+  if (onglet === 'ects') {
+    return (
+      <div className="space-y-5">
+        {onglets}
+        <EctsPanel ues={uesEcts} items={ectsItems} evaluations={evaluations} onItemsChange={onEctsChange} />
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-5">
+      {onglets}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div className="bg-surface rounded-3xl border border-line shadow-cozy px-5 py-4">
           <p className="text-xs text-muted">Moyenne générale</p>
@@ -151,6 +193,7 @@ function ReleveView({ search, filterType, filterValue, evaluations, onEvaluation
         evaluation={enEdition?.evaluation ?? null}
         estNouvelle={enEdition?.estNouvelle ?? false}
         catalogue={catalogueCours}
+        ues={uesEcts}
         onClose={() => setEnEdition(null)}
         onSave={handleSave}
         onDelete={handleDelete}
