@@ -53,7 +53,8 @@ function EvaluationModal({ open, evaluation, estNouvelle, catalogue, ues, onClos
 
   function handleCoursChange(e) {
     const cours = catalogue.find((c) => c.titre === e.target.value)
-    setForm((f) => ({ ...f, cours: e.target.value, ue: cours?.ue ?? f.ue }))
+    // Coefficient pré-rempli avec les ECTS officiels du cours (pondération habituelle ; 0 ECTS → coef. 0, la note ne compte pas).
+    setForm((f) => ({ ...f, cours: e.target.value, ue: cours?.ue ?? f.ue, coefficient: cours ? String(cours.ects ?? 1) : f.coefficient }))
   }
 
   function handleSubmit(e) {
@@ -63,7 +64,7 @@ function EvaluationModal({ open, evaluation, estNouvelle, catalogue, ues, onClos
     if (form.note !== '' && (Number.isNaN(num(form.note)) || num(form.note) < 0)) return setErreur('La note doit être un nombre positif.')
     if (Number.isNaN(num(form.sur)) || num(form.sur) <= 0) return setErreur('Le barème doit être supérieur à 0.')
     if (form.note !== '' && num(form.note) > num(form.sur)) return setErreur('La note ne peut pas dépasser le barème.')
-    if (Number.isNaN(num(form.coefficient)) || num(form.coefficient) <= 0) return setErreur('Le coefficient doit être supérieur à 0.')
+    if (Number.isNaN(num(form.coefficient)) || num(form.coefficient) < 0) return setErreur('Le coefficient doit être positif (0 = ne compte pas dans la moyenne).')
     onSave({ ...form, intitule: form.intitule.trim(), observation: form.observation.trim() })
   }
 
@@ -121,6 +122,7 @@ function EvaluationModal({ open, evaluation, estNouvelle, catalogue, ues, onClos
                 {coursDeLUe.map((c) => (
                   <option key={`${c.ue}|${c.titre}`} value={c.titre}>
                     {c.titre}
+                    {c.ects ? ` (${c.ects} ECTS)` : ''}
                   </option>
                 ))}
               </select>
@@ -182,7 +184,10 @@ function EvaluationModal({ open, evaluation, estNouvelle, catalogue, ues, onClos
               <input id="eval-coef" type="text" inputMode="decimal" value={form.coefficient} onChange={set('coefficient')} className={CHAMP} />
             </div>
           </div>
-          <p className="text-xs text-muted -mt-2">Laisse la note vide si l'épreuve n'est pas encore notée (elle ne compte pas dans la moyenne).</p>
+          <p className="text-xs text-muted -mt-2">
+            Coefficient pré-rempli avec les ECTS du cours. Laisse la note vide si l'épreuve n'est pas encore notée ; un coefficient 0
+            (ex. évaluation de niveau) affiche la note sans la compter dans la moyenne.
+          </p>
 
           <div>
             <label htmlFor="eval-observation" className="block text-sm font-medium text-muted mb-1">

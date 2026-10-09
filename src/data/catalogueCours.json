@@ -1,162 +1,319 @@
 [
   {
     "titre": "Boost Camp",
-    "ue": "Bootcamp"
+    "ue": "Bootcamp",
+    "ects": 0
   },
   {
+    "code": "UE0Aa4",
     "titre": "[B3] Conférence de rentrée",
-    "ue": "UE0 - HORS UE"
+    "ue": "UE0 - HORS UE",
+    "ects": 0,
+    "semestre": "S1",
+    "volume": "3,5 h"
   },
   {
+    "code": "UE0Ca2",
     "titre": "[B3] Partiels S1",
-    "ue": "UE0 - HORS UE"
+    "ue": "UE0 - HORS UE",
+    "ects": 5,
+    "semestre": "S1",
+    "volume": "7 h"
   },
   {
+    "code": "UE0Ba21",
     "titre": "[B3AIA] Onboarding de spécialité",
-    "ue": "UE0 - HORS UE"
+    "ue": "UE0 - HORS UE",
+    "ects": 0,
+    "semestre": "S1",
+    "volume": "3,5 h"
   },
   {
+    "code": "UE1Ca3",
     "titre": "[B3] Droit de la propriété intellectuelle",
-    "ue": "UE1 - CULTURE(S)"
+    "ue": "UE1 - CULTURE(S)",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "7 h"
   },
   {
+    "code": "UE2Ba4",
     "titre": "[B3] Analyse des parcours utilisateurs",
-    "ue": "UE2 - DESIGN"
+    "ue": "UE2 - DESIGN",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "10,5 h"
   },
   {
+    "code": "UE2Bd1",
     "titre": "[B3] Concevoir un prototype pour les tests utilisateurs",
-    "ue": "UE2 - DESIGN"
+    "ue": "UE2 - DESIGN",
+    "ects": 2,
+    "semestre": "S2",
+    "volume": "14 h"
   },
   {
+    "code": "UE4Bd1",
     "titre": "[B3] Dashboard de suivi de campagne",
-    "ue": "UE4 - MARKETING"
+    "ue": "UE4 - MARKETING",
+    "ects": 0,
+    "semestre": "S1",
+    "volume": "14 h"
   },
   {
+    "code": "UE4Ab1",
     "titre": "[B3] Écosystème digital de marque",
-    "ue": "UE4 - MARKETING"
+    "ue": "UE4 - MARKETING",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "7 h"
   },
   {
+    "code": "UE4Ac2",
     "titre": "[B3] Segmenter le marché et les cibles",
-    "ue": "UE4 - MARKETING"
+    "ue": "UE4 - MARKETING",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "7 h"
   },
   {
+    "code": "UE4Ba4",
     "titre": "[B3] Stratégie marketing digital",
-    "ue": "UE4 - MARKETING"
+    "ue": "UE4 - MARKETING",
+    "ects": 2,
+    "semestre": "S1",
+    "volume": "17,5 h"
   },
   {
+    "code": "UE5Bc2",
     "titre": "[B3] Sécuriser les données utilisateur",
-    "ue": "UE5 - TECHNOLOGIE(S)"
+    "ue": "UE5 - TECHNOLOGIE(S)",
+    "ects": 2,
+    "semestre": "S2",
+    "volume": "10,5 h"
   },
   {
+    "code": "UE5Ae5",
     "titre": "[B3] Solution digitale - Assurer la maintenance",
-    "ue": "UE5 - TECHNOLOGIE(S)"
+    "ue": "UE5 - TECHNOLOGIE(S)",
+    "ects": 1,
+    "semestre": "S2",
+    "volume": "7 h"
   },
   {
+    "code": "UE5Db12",
     "titre": "[B3AIA] Architecture no-code avancée & scalabilité",
-    "ue": "UE5 - TECHNOLOGIE(S)"
+    "ue": "UE5 - TECHNOLOGIE(S)",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "14 h"
   },
   {
+    "code": "UE5Dc3",
     "titre": "[B3AIA] Connexions & services externes no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)"
+    "ue": "UE5 - TECHNOLOGIE(S)",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "10,5 h"
   },
   {
+    "code": "UE5Ca8",
     "titre": "[B3AIA] Data & analytics no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)"
+    "ue": "UE5 - TECHNOLOGIE(S)",
+    "ects": 2,
+    "semestre": "S2",
+    "volume": "14 h"
   },
   {
+    "code": "UE5Db13",
     "titre": "[B3AIA] FlutterFlow : Applications mobiles no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)"
+    "ue": "UE5 - TECHNOLOGIE(S)",
+    "ects": 2,
+    "semestre": "S1",
+    "volume": "14 h"
   },
   {
+    "code": "UE5Ae11",
     "titre": "[B3AIA] Performance & optimisation no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)"
+    "ue": "UE5 - TECHNOLOGIE(S)",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "14 h"
   },
   {
+    "code": "UE5Bc5",
     "titre": "[B3AIA] Sécurité systémique no-code : fil rouge",
-    "ue": "UE5 - TECHNOLOGIE(S)"
+    "ue": "UE5 - TECHNOLOGIE(S)",
+    "ects": 2,
+    "semestre": "S1",
+    "volume": "21 h"
   },
   {
+    "code": "UE5Ae12",
     "titre": "[B3AIA] Tests avancés & qualité no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)"
+    "ue": "UE5 - TECHNOLOGIE(S)",
+    "ects": 2,
+    "semestre": "S2",
+    "volume": "14 h"
   },
   {
+    "code": "UE6Ba6",
     "titre": "[B3] Automatiser sa veille avec les IA",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES"
+    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "7 h"
   },
   {
+    "code": "UE6Cd1",
     "titre": "[B3] Modélisation et stratégie IA",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES"
+    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "7 h"
   },
   {
+    "code": "UE6Bb1",
     "titre": "[B3AIA] IA pilotée & agents no-code",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES"
+    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
+    "ects": 2,
+    "semestre": "S1",
+    "volume": "17,5 h"
   },
   {
+    "code": "UE6Ba12",
     "titre": "[B3AIA] n8n : Orchestration avancée",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES"
+    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
+    "ects": 2,
+    "semestre": "S1",
+    "volume": "21 h"
   },
   {
+    "code": "UE7Ac13",
     "titre": "[B3] Cahier des charges et création backlog",
-    "ue": "UE7 - GESTION DE PROJET"
+    "ue": "UE7 - GESTION DE PROJET",
+    "ects": 2,
+    "semestre": "S2",
+    "volume": "10,5 h"
   },
   {
+    "code": "UE7Bb1",
     "titre": "[B3] Définir les objectifs stratégiques",
-    "ue": "UE7 - GESTION DE PROJET"
+    "ue": "UE7 - GESTION DE PROJET",
+    "ects": 0,
+    "semestre": "S1",
+    "volume": "3,5 h"
   },
   {
+    "code": "UE7Aa2",
     "titre": "[B3] Gestion de projet agile avec Scrum",
-    "ue": "UE7 - GESTION DE PROJET"
+    "ue": "UE7 - GESTION DE PROJET",
+    "ects": 3,
+    "semestre": "S2",
+    "volume": "14 h"
   },
   {
+    "code": "UE7Ac11",
     "titre": "[B3] LEARN - Rappels cahier des charges",
-    "ue": "UE7 - GESTION DE PROJET"
+    "ue": "UE7 - GESTION DE PROJET",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "3,5 h"
   },
   {
+    "code": "UE7Ac12",
     "titre": "[B3] LEARN - Rappels note de cadrage",
-    "ue": "UE7 - GESTION DE PROJET"
+    "ue": "UE7 - GESTION DE PROJET",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "3,5 h"
   },
   {
+    "code": "UE7Ba3",
     "titre": "[B3] Pilotage et performance équipe agile",
-    "ue": "UE7 - GESTION DE PROJET"
+    "ue": "UE7 - GESTION DE PROJET",
+    "ects": 1,
+    "semestre": "S2",
+    "volume": "7 h"
   },
   {
+    "code": "UE7Ba5",
     "titre": "[B3AIA] Pilotage & management de projet no-code",
-    "ue": "UE7 - GESTION DE PROJET"
+    "ue": "UE7 - GESTION DE PROJET",
+    "ects": 2,
+    "semestre": "S2",
+    "volume": "14 h"
   },
   {
+    "code": "UE8Ba2",
     "titre": "[B3] Créer un impact positif - Tech for Good",
-    "ue": "UE8 - RSE"
+    "ue": "UE8 - RSE",
+    "ects": 2,
+    "semestre": "S2",
+    "volume": "7 h"
   },
   {
+    "code": "UE8Ab3",
     "titre": "[B3] Écoconception de service numérique et sobriété marketing digital",
-    "ue": "UE8 - RSE"
+    "ue": "UE8 - RSE",
+    "ects": 0,
+    "semestre": "S2",
+    "volume": "7 h"
   },
   {
+    "code": "UE8Aa3",
     "titre": "[B3] Le dérèglement climatique et les 9 limites planétaires",
-    "ue": "UE8 - RSE"
+    "ue": "UE8 - RSE",
+    "ects": 0,
+    "semestre": "S1",
+    "volume": "3,5 h"
   },
   {
+    "code": "UE8Ab4",
     "titre": "[B3] Les impacts environnementaux du numérique",
-    "ue": "UE8 - RSE"
+    "ue": "UE8 - RSE",
+    "ects": 1,
+    "semestre": "S1",
+    "volume": "3,5 h"
   },
   {
+    "code": "UE8Ab5",
     "titre": "[B3] Workshop éco-conception",
-    "ue": "UE8 - RSE"
+    "ue": "UE8 - RSE",
+    "ects": 4,
+    "semestre": "S2",
+    "volume": "14 h"
   },
   {
+    "code": "UE9Ea1",
     "titre": "[B3] Initiation au Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION"
+    "ue": "UE9 - PROFESSIONNALISATION",
+    "ects": 0,
+    "semestre": "S2",
+    "volume": "7 h"
   },
   {
+    "code": "UE9Ab4",
     "titre": "[B3] LEARN - Citoyenneté et diversité",
-    "ue": "UE9 - PROFESSIONNALISATION"
+    "ue": "UE9 - PROFESSIONNALISATION",
+    "ects": 0,
+    "semestre": "S1",
+    "volume": "3,5 h"
   },
   {
+    "code": "UE9Ca15",
     "titre": "[B3AIA] Compétition DC Playoffs",
-    "ue": "UE9 - PROFESSIONNALISATION"
+    "ue": "UE9 - PROFESSIONNALISATION",
+    "ects": 2,
+    "semestre": "S1",
+    "volume": "28 h"
   },
   {
+    "code": "UE9Ea7",
     "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION"
+    "ue": "UE9 - PROFESSIONNALISATION",
+    "ects": 6,
+    "semestre": "S2",
+    "volume": "63 h"
   }
 ]

@@ -161,7 +161,7 @@ function ReleveView({ search, filterType, filterValue, evaluations, onEvaluation
                                   {e.note}
                                   <span className="text-xs text-muted font-semibold">/{e.sur}</span>
                                 </p>
-                                <p className="text-[10px] text-muted">coef. {e.coefficient}</p>
+                                <p className="text-[10px] text-muted">{parseFloat(String(e.coefficient).replace(',', '.')) === 0 ? 'hors moyenne' : `coef. ${e.coefficient}`}</p>
                               </>
                             )}
                           </div>

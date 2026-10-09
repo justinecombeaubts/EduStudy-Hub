@@ -12,7 +12,7 @@ const STATUT = {
   attente: { label: 'En attente de notes', icon: Hourglass, style: 'text-muted' },
 }
 
-const DEFAUTS = ectsParDefaut(catalogueCours) // 1 cours du catalogue = 1 ECTS
+const DEFAUTS = ectsParDefaut(catalogueCours) // ECTS officiels du programme, sommés par UE
 
 const formatDate = (iso) =>
   iso ? new Date(`${iso}T00:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Sans date'
@@ -95,7 +95,7 @@ function EctsPanel({ ues, items, evaluations, onItemsChange }) {
             <ChampEcts
               valeur={calc.objectif}
               label="Objectif d'ECTS de l'année"
-              onCommit={(n) => upsert({ ...config, objectif: n || 52 })}
+              onCommit={(n) => upsert({ ...config, objectif: n || 58 })}
             />
           </label>
         </div>
@@ -116,7 +116,7 @@ function EctsPanel({ ues, items, evaluations, onItemsChange }) {
         </div>
         {calc.totalUeConfigure < calc.objectif && (
           <p className="text-xs text-orange-700">
-            Les ECTS de tes UE ({formatEcts(calc.totalUeConfigure)}) n'atteignent pas l'objectif : le catalogue ne liste pas encore tous tes cours. Ajuste les valeurs ci-dessous à partir de ta maquette.
+            Les ECTS de tes UE ({formatEcts(calc.totalUeConfigure)}) n'atteignent pas l'objectif ({formatEcts(calc.objectif)}) : vérifie les valeurs ci-dessous ou l'objectif.
           </p>
         )}
       </section>
@@ -131,7 +131,7 @@ function EctsPanel({ ues, items, evaluations, onItemsChange }) {
               <span className="text-lg text-muted"> / {formatEcts(calc.objectifTotal)} ECTS</span>
             </p>
             <p className="text-xs text-muted">
-              {formatEcts(calc.acquisUe)} de compétences + {formatEcts(calc.ectsActivites)} d'activités
+              {formatEcts(calc.acquisUe)} de compétences + {formatEcts(calc.ectsActivites)} additionnels
             </p>
           </div>
           <label className="flex items-center gap-2 text-xs text-muted">
@@ -157,7 +157,7 @@ function EctsPanel({ ues, items, evaluations, onItemsChange }) {
         <header className="px-5 py-3 border-b border-line bg-rose-50/60">
           <h3 className="font-semibold text-heading">ECTS par UE</h3>
           <p className="text-xs text-muted">
-            1 cours = 1 ECTS (pré-rempli d'après le catalogue, modifiable). Si la moyenne de l'UE atteint {SEUIL_VALIDATION}/20, tu obtiens
+            ECTS officiels du programme 2026-2027 (modifiables). Si la moyenne de l'UE atteint {SEUIL_VALIDATION}/20, tu obtiens
             tous ses ECTS — même avec un cours sous 10, rattrapé par les autres (compensation).
           </p>
         </header>
@@ -211,12 +211,14 @@ function EctsPanel({ ues, items, evaluations, onItemsChange }) {
           <div className="flex-1 min-w-0">
             <h3 className="flex items-center gap-1.5 font-semibold text-heading">
               <Sparkle className="w-4 h-4 text-orange-400" />
-              ECTS d'activités
+              ECTS additionnels
               <span className="ml-1 px-2 py-0.5 rounded-full bg-peach-100 text-orange-800 text-xs font-bold">
                 {formatEcts(calc.ectsActivites)} ECTS
               </span>
             </h3>
-            <p className="text-xs text-muted">Activités proposées par l'école, ajoutées à la main — comptées à part de l'objectif des compétences.</p>
+            <p className="text-xs text-muted">
+              Activités proposées par l'école (au programme : Conférence S1 et Conférence S2, 1 ECTS chacune), ajoutées à la main — comptées à part des compétences.
+            </p>
           </div>
           <button
             type="button"

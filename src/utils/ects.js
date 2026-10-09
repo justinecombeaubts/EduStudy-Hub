@@ -1,17 +1,18 @@
 import { moyenne } from './releve'
 
-// Suivi ECTS (principe européen) : 1 cours = 1 ECTS par défaut ; une UE est validée — et rapporte
-// TOUS ses ECTS — si sa moyenne pondérée est ≥ 10/20 (compensation : un cours sous 10 peut être
-// rattrapé par les autres cours de l'UE). Deux objectifs :
-// - compétences : OBJECTIF ECTS issus des UE uniquement (52 par défaut) ;
-// - diplôme : OBJECTIF TOTAL = UE + ECTS d'activités ajoutés à la main (60 par défaut).
-// Les ECTS d'activités (proposées par l'école, avec justification) restent affichés à part.
+// Suivi ECTS (principe européen) — programme officiel B3 AIA 2026-2027 (catalogueCours.json) :
+// chaque cours a ses ECTS (0 à 6) ; une UE est validée — et rapporte TOUS ses ECTS — si sa moyenne
+// pondérée est ≥ 10/20 (compensation : un cours sous 10 peut être rattrapé par les autres cours de
+// l'UE). Deux objectifs :
+// - compétences : ECTS issus des UE uniquement (58 au programme) ;
+// - diplôme : UE + ECTS additionnels ajoutés à la main (Conférences S1/S2…), 60 au programme.
+// Les ECTS additionnels (activités de l'école, avec justification) restent affichés à part.
 //
 // Store "ects" (un seul tableau, champ `kind`) :
 // - { id: 'config', kind: 'config', objectif, objectifTotal }
 // - { id: 'ue:<UE>', kind: 'ue', ue, ects }                 ECTS d'une UE modifiés à la main (sinon défaut)
 // - { id: 'act-…', kind: 'activite', titre, date, ects, justification, liens, fichiers }
-export const OBJECTIF_DEFAUT = 52
+export const OBJECTIF_DEFAUT = 58
 export const OBJECTIF_TOTAL_DEFAUT = 60
 export const SEUIL_VALIDATION = 10
 
@@ -26,13 +27,12 @@ export function nouvelleActivite() {
   return { id: `act-${Date.now()}`, kind: 'activite', titre: '', date: '', ects: '', justification: '', liens: [], fichiers: [] }
 }
 
-// 1 cours = 1 ECTS : ECTS par défaut d'une UE = nombre de cours du catalogue rattachés à l'UE.
-// "UE0 - HORS UE" (conférence, onboarding, partiels) ne rapporte rien par défaut.
+// ECTS par défaut d'une UE = somme des ECTS officiels de ses cours (catalogueCours.json).
 export function ectsParDefaut(catalogue) {
   const parUe = {}
   for (const c of catalogue) {
-    if (!c.ue.startsWith('UE') || c.ue.startsWith('UE0')) continue
-    parUe[c.ue] = (parUe[c.ue] ?? 0) + 1
+    if (!c.ue.startsWith('UE')) continue
+    parUe[c.ue] = (parUe[c.ue] ?? 0) + (c.ects ?? 0)
   }
   return parUe
 }

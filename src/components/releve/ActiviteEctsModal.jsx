@@ -76,7 +76,7 @@ function ActiviteEctsModal({ open, activite, estNouvelle, onClose, onSave, onDel
         <div className="flex items-center justify-between mb-4">
           <h2 className="flex items-center gap-1.5 text-lg font-semibold text-heading">
             <Sparkle className="w-4 h-4 text-rose-300" />
-            {estNouvelle ? "Ajouter des ECTS d'activité" : "Modifier l'activité"}
+            {estNouvelle ? 'Ajouter des ECTS additionnels' : "Modifier l'activité"}
           </h2>
           <button
             type="button"
@@ -98,7 +98,7 @@ function ActiviteEctsModal({ open, activite, estNouvelle, onClose, onSave, onDel
               type="text"
               value={form.titre}
               onChange={(e) => set('titre')(e.target.value)}
-              placeholder="Ex. Journée portes ouvertes, tutorat, hackathon, BDE..."
+              placeholder="Ex. Conférence S1, Conférence S2, journée portes ouvertes..."
               className={CHAMP}
               autoFocus
             />
