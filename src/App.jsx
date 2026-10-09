@@ -124,7 +124,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex bg-app">
+    <div className="min-h-screen flex">
       <Sidebar activeItem={activeItem} onSelect={setActiveItem} onOpenSakura={() => sakuraRef.current?.open()} />
 
       <div className="flex-1 flex flex-col min-w-0">

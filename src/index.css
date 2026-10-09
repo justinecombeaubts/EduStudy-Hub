@@ -6,7 +6,7 @@
 
 /* DA (voir CLAUDE.md) : bordeaux/argent/rose nude, clair ↔ sombre par variables CSS.
    Ambiance "cozy chill" : typo arrondie (Quicksand/Nunito), coins doux, motif discret en fond
-   (petites fleurs + points + étincelles, teinte selon le mode). */
+   (treillis de losanges argentés, teinte selon le mode). */
 :root {
   --bg: #f4f4f6;
   --surface: #ffffff;
@@ -19,7 +19,7 @@
   --accent-soft: #e2baac;
   --on-accent: #2a0f17;
   --glass: rgb(255 255 255 / 0.78);
-  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='%23cf9d8e' fill-opacity='0.22'%3E%3Cg transform='translate(28 30)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3Cg transform='translate(102 96) scale(.7)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3Ccircle cx='86' cy='26' r='2'/%3E%3Ccircle cx='40' cy='108' r='2.5'/%3E%3Ccircle cx='122' cy='50' r='1.5'/%3E%3Ccircle cx='66' cy='70' r='1.5'/%3E%3Cpath d='M112 14l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z'/%3E%3Cpath d='M14 84l1.2 3.3 3.3 1.2-3.3 1.2-1.2 3.3-1.2-3.3-3.3-1.2 3.3-1.2z'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2764%27%20height%3D%2764%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%239a9ba6%27%20stroke-opacity%3D%270.32%27%20stroke-width%3D%271%27%3E%3Cpath%20d%3D%27M32%204L60%2032L32%2060L4%2032Z%27%2F%3E%3Cpath%20d%3D%27M32%2016L48%2032L32%2048L16%2032Z%27%20stroke-opacity%3D%270.192%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27%239a9ba6%27%20fill-opacity%3D%270.32%27%3E%3Ccircle%20cx%3D%2732%27%20cy%3D%2732%27%20r%3D%271.6%27%2F%3E%3Ccircle%20cx%3D%270%27%20cy%3D%270%27%20r%3D%271.2%27%2F%3E%3Ccircle%20cx%3D%2764%27%20cy%3D%270%27%20r%3D%271.2%27%2F%3E%3Ccircle%20cx%3D%270%27%20cy%3D%2764%27%20r%3D%271.2%27%2F%3E%3Ccircle%20cx%3D%2764%27%20cy%3D%2764%27%20r%3D%271.2%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   color-scheme: light;
 }
 
@@ -35,7 +35,7 @@
   --accent-soft: #e2baac;
   --on-accent: #2a0f17;
   --glass: rgb(58 22 32 / 0.8);
-  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='%23e2baac' fill-opacity='0.07'%3E%3Cg transform='translate(28 30)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3Cg transform='translate(102 96) scale(.7)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3Ccircle cx='86' cy='26' r='2'/%3E%3Ccircle cx='40' cy='108' r='2.5'/%3E%3Ccircle cx='122' cy='50' r='1.5'/%3E%3Ccircle cx='66' cy='70' r='1.5'/%3E%3Cpath d='M112 14l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z'/%3E%3Cpath d='M14 84l1.2 3.3 3.3 1.2-3.3 1.2-1.2 3.3-1.2-3.3-3.3-1.2 3.3-1.2z'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2764%27%20height%3D%2764%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23d9dae0%27%20stroke-opacity%3D%270.13%27%20stroke-width%3D%271%27%3E%3Cpath%20d%3D%27M32%204L60%2032L32%2060L4%2032Z%27%2F%3E%3Cpath%20d%3D%27M32%2016L48%2032L32%2048L16%2032Z%27%20stroke-opacity%3D%270.078%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27%23d9dae0%27%20fill-opacity%3D%270.13%27%3E%3Ccircle%20cx%3D%2732%27%20cy%3D%2732%27%20r%3D%271.6%27%2F%3E%3Ccircle%20cx%3D%270%27%20cy%3D%270%27%20r%3D%271.2%27%2F%3E%3Ccircle%20cx%3D%2764%27%20cy%3D%270%27%20r%3D%271.2%27%2F%3E%3Ccircle%20cx%3D%270%27%20cy%3D%2764%27%20r%3D%271.2%27%2F%3E%3Ccircle%20cx%3D%2764%27%20cy%3D%2764%27%20r%3D%271.2%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   color-scheme: dark;
 }
 
