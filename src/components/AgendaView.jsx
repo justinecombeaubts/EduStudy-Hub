@@ -1,17 +1,20 @@
 import { useState } from 'react'
-import { Plus, Coffee } from 'lucide-react'
-import mockCourses from '../data/mockCourses.json'
+import { Plus, Coffee, PartyPopper } from 'lucide-react'
+import catalogueCours from '../data/catalogueCours.json'
 import CourseFicheModal from './CourseFicheModal'
 import AgendaNav from './agenda/AgendaNav'
 import WeekView from './agenda/WeekView'
 import DayView from './agenda/DayView'
 import MonthView from './agenda/MonthView'
 import YearView from './agenda/YearView'
-import { addDays, addMonths, addYears, getWeekDates, JOURS_SEMAINE, MOIS } from '../utils/agendaDates'
+import EvenementModal from './agenda/EvenementModal'
+import { addDays, addMonths, addYears, getWeekDates, toISODate, JOURS_SEMAINE, MOIS } from '../utils/agendaDates'
+import { estEvenement } from '../utils/usePlanning'
 import { matchesSearch } from '../utils/searchFilter'
+import { ecrirePiecesJointes } from '../utils/piecesJointes'
 
 const VUES = ['Jour', 'Semaine', 'Mois', 'Année']
-const COURSE_FIELDS = { titre: 'titre', ue: 'ue' } // mockCourses.json n'a pas de champ thème
+const COURSE_FIELDS = { titre: 'titre', ue: 'ue' } // les créneaux n'ont pas de champ thème
 
 function formatLabel(vue, date) {
   if (vue === 'Jour') {
@@ -34,15 +37,18 @@ function formatLabel(vue, date) {
 // la recherche/le filtre globaux (Header) sur les cours affichés dans les 4 vues.
 // `fiches` est le tableau unifié (même donnée que le Coin Study, voir App.jsx) : on en dérive ici
 // un lookup par courseId (une fiche de cours a `id === courseId`) pour les vues et la modale.
-function AgendaView({ search, filterType, filterValue, fiches, onFichesChange }) {
+// `courses` = créneaux du planning déjà fusionnés avec le cours choisi par l'étudiant (usePlanning.js),
+// `onAffecterCours(slotId, cours|null)` = choix manuel du cours d'un créneau ;
+// `onSaveEvenement` / `onDeleteEvenement` = événements libres (nom, date, horaires, description).
+function AgendaView({ search, filterType, filterValue, fiches, onFichesChange, courses, onAffecterCours, onSaveEvenement, onDeleteEvenement }) {
   const [vueActive, setVueActive] = useState('Semaine')
   const [currentDate, setCurrentDate] = useState(new Date())
   const [modalOpen, setModalOpen] = useState(false)
   const [activeCourseId, setActiveCourseId] = useState(null)
+  // undefined = modale fermée ; null = création ; objet = édition.
+  const [evenementEdite, setEvenementEdite] = useState(undefined)
 
-  const coursesFiltres = mockCourses.filter((c) =>
-    matchesSearch(c, { search, filterType, filterValue }, COURSE_FIELDS)
-  )
+  const coursesFiltres = courses.filter((c) => matchesSearch(c, { search, filterType, filterValue }, COURSE_FIELDS))
   const filtreActif = search.trim() !== '' || Boolean(filterValue) || filterType === 'Thème'
   const aucunResultat = filtreActif && coursesFiltres.length === 0
 
@@ -56,18 +62,29 @@ function AgendaView({ search, filterType, filterValue, fiches, onFichesChange })
   }
 
   function handleOpenCourse(coursId) {
+    const item = courses.find((c) => c.id === coursId)
+    if (estEvenement(item)) {
+      setEvenementEdite(item)
+      return
+    }
     setActiveCourseId(coursId)
     setModalOpen(true)
   }
 
-  function handleSaveFiche(coursId, data) {
-    const course = mockCourses.find((c) => c.id === coursId)
+  function handleSaveFiche(coursId, { cours, fiche: data }) {
+    // `cours === undefined` : créneau Entreprise, non modifiable ; `null` : créneau libéré.
+    if (cours !== undefined) onAffecterCours(coursId, cours)
+    if (!data) {
+      setModalOpen(false)
+      return
+    }
+    const course = courses.find((c) => c.id === coursId)
     const existing = fichesByCourseId[coursId]
     // CourseFicheModal ne connaît pas l'Écriture magique (Coin Study uniquement, AUDIT.md J2
     // Tâche 7) : on préserve la mise en forme IA déjà validée, sauf si le contenu a changé ici
     // (elle ne correspondrait alors plus au texte source).
     const redactionIA = existing?.contenu === data.contenu ? (existing?.redactionIA ?? null) : null
-    const ficheAJour = {
+    const ficheAJour = ecrirePiecesJointes({
       id: coursId,
       courseId: coursId,
       titre: data.titre,
@@ -77,12 +94,7 @@ function AgendaView({ search, filterType, filterValue, fiches, onFichesChange })
       contenu: data.contenu,
       date: course?.date ?? existing?.date ?? null,
       redactionIA,
-      // Toujours pris tels quels depuis la modale (déjà pré-remplis depuis la fiche existante à
-      // l'ouverture) — pas de repli sur `existing`, sinon un fichier retiré (mis à `null`) serait
-      // silencieusement restauré par le `??`.
-      lien: data.lien,
-      fichier: data.fichier,
-    }
+    }, data) // liens/fichiers pris tels quels depuis la modale (déjà pré-remplis à l'ouverture)
 
     onFichesChange(
       existing ? fiches.map((f) => (f.id === coursId ? ficheAJour : f)) : [...fiches, ficheAJour]
@@ -126,7 +138,7 @@ function AgendaView({ search, filterType, filterValue, fiches, onFichesChange })
 
   return (
     <div className="relative">
-      <section className="bg-surface rounded-2xl border border-line shadow-sm shadow-rose-100/50 overflow-hidden">
+      <section className="bg-surface rounded-2xl border border-line shadow-cozy overflow-hidden">
         <div className="flex items-center gap-1 p-2 border-b border-line bg-rose-50/60">
           {VUES.map((vue) => (
             <button
@@ -140,6 +152,14 @@ function AgendaView({ search, filterType, filterValue, fiches, onFichesChange })
               {vue}
             </button>
           ))}
+          <button
+            type="button"
+            onClick={() => setEvenementEdite(null)}
+            className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-semibold text-sky-800 bg-sky-100 hover:brightness-95 transition"
+          >
+            <PartyPopper className="w-4 h-4" />
+            <span className="hidden sm:inline">Nouvel événement</span>
+          </button>
         </div>
 
         <AgendaNav
@@ -186,11 +206,27 @@ function AgendaView({ search, filterType, filterValue, fiches, onFichesChange })
       <CourseFicheModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
-        courses={mockCourses}
+        courses={courses}
+        catalogue={catalogueCours}
         fiches={fichesByCourseId}
         initialCourseId={activeCourseId}
         onSave={handleSaveFiche}
         onDelete={handleDeleteFiche}
+      />
+
+      <EvenementModal
+        open={evenementEdite !== undefined}
+        evenement={evenementEdite ?? null}
+        dateParDefaut={toISODate(currentDate)}
+        onClose={() => setEvenementEdite(undefined)}
+        onSave={(evt) => {
+          onSaveEvenement(evt)
+          setEvenementEdite(undefined)
+        }}
+        onDelete={(id) => {
+          onDeleteEvenement(id)
+          setEvenementEdite(undefined)
+        }}
       />
     </div>
   )

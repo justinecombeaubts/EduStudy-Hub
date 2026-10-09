@@ -7,7 +7,7 @@ import { createClient } from '@supabase/supabase-js'
 // il passe uniquement par /.netlify/functions/data. Les policies RLS côté Supabase n'autorisent
 // plus rien pour la clé anon — cette fonction (service_role) contourne RLS par nature, c'est le
 // seul chemin d'accès légitime.
-const ALLOWED_TABLES = ['fiches', 'flashcards', 'qcm']
+const ALLOWED_TABLES = ['fiches', 'flashcards', 'qcm', 'creneaux', 'livrables', 'evenements']
 
 const supabaseAdmin = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY)
 

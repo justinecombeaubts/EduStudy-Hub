@@ -33,11 +33,12 @@ function RedactionIACard({ redaction, variant = 'validee' }) {
         <div className="space-y-3 min-w-0">
           {redaction.definitions.length > 0 && (
             <div>
-              <p className="text-xs font-semibold text-rose-800 mb-1.5">📖 Définitions</p>
+              <p className="text-xs font-semibold text-rose-800">📖 Définitions</p>
+              <p className="text-[10px] text-muted mb-1.5">Termes techniques expliqués par l’IA — à vérifier</p>
               <ul className="space-y-1.5">
                 {redaction.definitions.map((d, i) => (
                   <li key={i} className="text-xs leading-snug">
-                    <span className="font-medium text-muted">{d.terme}</span>
+                    <span className="font-semibold text-heading">{d.terme}</span>
                     {d.definition && <span className="text-muted"> — {d.definition}</span>}
                   </li>
                 ))}

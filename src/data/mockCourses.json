@@ -11,7 +11,9 @@
     "statutFiche": "non_applicable",
     "startDate": "2026-10-08",
     "endDate": "2027-07-31",
-    "excludeDates": ["2027-06-14"]
+    "excludeDates": [
+      "2027-06-14"
+    ]
   },
   {
     "id": "entreprise-mardi",
@@ -25,7 +27,9 @@
     "statutFiche": "non_applicable",
     "startDate": "2026-10-08",
     "endDate": "2027-07-31",
-    "excludeDates": ["2027-06-15"]
+    "excludeDates": [
+      "2027-06-15"
+    ]
   },
   {
     "id": "entreprise-mercredi",
@@ -39,798 +43,440 @@
     "statutFiche": "non_applicable",
     "startDate": "2026-10-08",
     "endDate": "2027-07-31",
-    "excludeDates": ["2027-06-16"]
+    "excludeDates": [
+      "2027-06-16"
+    ]
   },
   {
     "id": "bootcamp-j1",
-    "titre": "Boost Camp",
-    "ue": "Bootcamp",
     "date": "2026-08-31",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Équipe pédagogique",
-    "salle": "Amphithéâtre A",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "bootcamp-j2",
-    "titre": "Boost Camp",
-    "ue": "Bootcamp",
     "date": "2026-09-01",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Équipe pédagogique",
-    "salle": "Amphithéâtre A",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "bootcamp-j3",
-    "titre": "Boost Camp",
-    "ue": "Bootcamp",
     "date": "2026-09-02",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Équipe pédagogique",
-    "salle": "Amphithéâtre A",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE0Aa4",
-    "titre": "[B3] Conférence de rentrée",
-    "ue": "UE0 - HORS UE",
     "date": "2026-10-08",
     "heureDebut": "09:00",
-    "heureFin": "12:30",
-    "professeur": "Équipe pédagogique",
-    "salle": "Amphithéâtre A",
-    "statutFiche": "a_faire"
+    "heureFin": "12:30"
   },
   {
     "id": "UE0Ba21",
-    "titre": "[B3AIA] Onboarding de spécialité",
-    "ue": "UE0 - HORS UE",
     "date": "2026-10-08",
     "heureDebut": "13:30",
-    "heureFin": "17:00",
-    "professeur": "Équipe pédagogique",
-    "salle": "Amphithéâtre A",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE7Ac11",
-    "titre": "[B3] LEARN - Rappels cahier des charges",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2026-10-09",
     "heureDebut": "09:00",
-    "heureFin": "12:30",
-    "professeur": "Module autonome (DC Learn)",
-    "salle": "E-learning / DC Learn",
-    "statutFiche": "a_faire"
+    "heureFin": "12:30"
   },
   {
     "id": "UE7Ac12",
-    "titre": "[B3] LEARN - Rappels note de cadrage",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2026-10-09",
     "heureDebut": "13:30",
-    "heureFin": "17:00",
-    "professeur": "Module autonome (DC Learn)",
-    "salle": "E-learning / DC Learn",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE7Bb1",
-    "titre": "[B3] Définir les objectifs stratégiques",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2026-10-15",
     "heureDebut": "09:00",
-    "heureFin": "12:30",
-    "professeur": "Coach agile",
-    "salle": "Salle Projet",
-    "statutFiche": "a_faire"
+    "heureFin": "12:30"
   },
   {
     "id": "UE8Aa3",
-    "titre": "[B3] Le dérèglement climatique et les 9 limites planétaires",
-    "ue": "UE8 - RSE",
     "date": "2026-10-15",
     "heureDebut": "13:30",
-    "heureFin": "17:00",
-    "professeur": "Intervenant RSE",
-    "salle": "Salle 108",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE8Ab4",
-    "titre": "[B3] Les impacts environnementaux du numérique",
-    "ue": "UE8 - RSE",
     "date": "2026-10-16",
     "heureDebut": "09:00",
-    "heureFin": "12:30",
-    "professeur": "Intervenant RSE",
-    "salle": "Salle 108",
-    "statutFiche": "a_faire"
+    "heureFin": "12:30"
   },
   {
     "id": "UE9Ab4",
-    "titre": "[B3] LEARN - Citoyenneté et diversité",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2026-10-16",
     "heureDebut": "13:30",
-    "heureFin": "17:00",
-    "professeur": "Module autonome (DC Learn)",
-    "salle": "E-learning / DC Learn",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE1Ca3",
-    "titre": "[B3] Droit de la propriété intellectuelle",
-    "ue": "UE1 - CULTURE(S)",
     "date": "2026-10-22",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant juridique",
-    "salle": "Salle 204",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE2Ba4",
-    "titre": "[B3] Analyse des parcours utilisateurs",
-    "ue": "UE2 - DESIGN",
     "date": "2026-10-23",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur UX/UI",
-    "salle": "Studio Design",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE4Ab1",
-    "titre": "[B3] Écosystème digital de marque",
-    "ue": "UE4 - MARKETING",
     "date": "2026-10-29",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant marketing digital",
-    "salle": "Salle 210",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE4Ac2",
-    "titre": "[B3] Segmenter le marché et les cibles",
-    "ue": "UE4 - MARKETING",
     "date": "2026-10-30",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant marketing digital",
-    "salle": "Salle 210",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE4Ba4-j1",
-    "titre": "[B3] Stratégie marketing digital",
-    "ue": "UE4 - MARKETING",
     "date": "2026-11-05",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant marketing digital",
-    "salle": "Salle 210",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE4Ba4-j2",
-    "titre": "[B3] Stratégie marketing digital",
-    "ue": "UE4 - MARKETING",
     "date": "2026-11-06",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant marketing digital",
-    "salle": "Salle 210",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE4Bd1-j1",
-    "titre": "[B3] Dashboard de suivi de campagne",
-    "ue": "UE4 - MARKETING",
     "date": "2026-11-12",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant marketing digital",
-    "salle": "Salle 210",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE4Bd1-j2",
-    "titre": "[B3] Dashboard de suivi de campagne",
-    "ue": "UE4 - MARKETING",
     "date": "2026-11-13",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant marketing digital",
-    "salle": "Salle 210",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Ae11-j1",
-    "titre": "[B3AIA] Performance & optimisation no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2026-11-19",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Ae11-j2",
-    "titre": "[B3AIA] Performance & optimisation no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2026-11-20",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Db12-j1",
-    "titre": "[B3AIA] Architecture no-code avancée & scalabilité",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2026-11-26",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Db12-j2",
-    "titre": "[B3AIA] Architecture no-code avancée & scalabilité",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2026-11-27",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Db13-j1",
-    "titre": "[B3AIA] FlutterFlow : Applications mobiles no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2026-12-03",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Db13-j2",
-    "titre": "[B3AIA] FlutterFlow : Applications mobiles no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2026-12-04",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Dc3",
-    "titre": "[B3AIA] Connexions & services externes no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2026-12-10",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Bc5-j1",
-    "titre": "[B3AIA] Sécurité systémique no-code : fil rouge",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2026-12-11",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Bc5-j2",
-    "titre": "[B3AIA] Sécurité systémique no-code : fil rouge",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2027-01-07",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Bc5-j3",
-    "titre": "[B3AIA] Sécurité systémique no-code : fil rouge",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2027-01-08",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE6Ba12-j1",
-    "titre": "[B3AIA] n8n : Orchestration avancée",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
     "date": "2027-01-14",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Expert IA & Automatisation",
-    "salle": "Lab IA",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE6Ba12-j2",
-    "titre": "[B3AIA] n8n : Orchestration avancée",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
     "date": "2027-01-15",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Expert IA & Automatisation",
-    "salle": "Lab IA",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE6Ba12-j3",
-    "titre": "[B3AIA] n8n : Orchestration avancée",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
     "date": "2027-01-21",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Expert IA & Automatisation",
-    "salle": "Lab IA",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE6Ba6",
-    "titre": "[B3] Automatiser sa veille avec les IA",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
     "date": "2027-01-22",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Expert IA & Automatisation",
-    "salle": "Lab IA",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE6Bb1-j1",
-    "titre": "[B3AIA] IA pilotée & agents no-code",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
     "date": "2027-01-28",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Expert IA & Automatisation",
-    "salle": "Lab IA",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE6Bb1-j2",
-    "titre": "[B3AIA] IA pilotée & agents no-code",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
     "date": "2027-01-29",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Expert IA & Automatisation",
-    "salle": "Lab IA",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE6Cd1",
-    "titre": "[B3] Modélisation et stratégie IA",
-    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES",
     "date": "2027-02-04",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Expert IA & Automatisation",
-    "salle": "Lab IA",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ca15-j1",
-    "titre": "[B3AIA] Compétition DC Playoffs",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-02-05",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ca15-j2",
-    "titre": "[B3AIA] Compétition DC Playoffs",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-02-11",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ca15-j3",
-    "titre": "[B3AIA] Compétition DC Playoffs",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-02-12",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ca15-j4",
-    "titre": "[B3AIA] Compétition DC Playoffs",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-02-18",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE0Ca2",
-    "titre": "[B3] Partiels S1",
-    "ue": "UE0 - HORS UE",
     "date": "2027-02-19",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Équipe pédagogique",
-    "salle": "Amphithéâtre A",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE2Bd1-j1",
-    "titre": "[B3] Concevoir un prototype pour les tests utilisateurs",
-    "ue": "UE2 - DESIGN",
     "date": "2027-03-04",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur UX/UI",
-    "salle": "Studio Design",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE2Bd1-j2",
-    "titre": "[B3] Concevoir un prototype pour les tests utilisateurs",
-    "ue": "UE2 - DESIGN",
     "date": "2027-03-05",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur UX/UI",
-    "salle": "Studio Design",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Ae12-j1",
-    "titre": "[B3AIA] Tests avancés & qualité no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2027-03-11",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Ae12-j2",
-    "titre": "[B3AIA] Tests avancés & qualité no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2027-03-12",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Ae5",
-    "titre": "[B3] Solution digitale - Assurer la maintenance",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2027-03-18",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Bc2-j1",
-    "titre": "[B3] Sécuriser les données utilisateur",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2027-03-19",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Bc2-j2",
-    "titre": "[B3] Sécuriser les données utilisateur",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2027-03-25",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Ca8-j1",
-    "titre": "[B3AIA] Data & analytics no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2027-03-26",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE5Ca8-j2",
-    "titre": "[B3AIA] Data & analytics no-code",
-    "ue": "UE5 - TECHNOLOGIE(S)",
     "date": "2027-04-01",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Formateur no-code",
-    "salle": "Lab No-Code",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE7Aa2-j1",
-    "titre": "[B3] Gestion de projet agile avec Scrum",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2027-04-02",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Coach agile",
-    "salle": "Salle Projet",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE7Aa2-j2",
-    "titre": "[B3] Gestion de projet agile avec Scrum",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2027-04-08",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Coach agile",
-    "salle": "Salle Projet",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE7Ac13-j1",
-    "titre": "[B3] Cahier des charges et création backlog",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2027-04-09",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Coach agile",
-    "salle": "Salle Projet",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE7Ac13-j2",
-    "titre": "[B3] Cahier des charges et création backlog",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2027-04-15",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Coach agile",
-    "salle": "Salle Projet",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE7Ba3",
-    "titre": "[B3] Pilotage et performance équipe agile",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2027-04-16",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Coach agile",
-    "salle": "Salle Projet",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE7Ba5-j1",
-    "titre": "[B3AIA] Pilotage & management de projet no-code",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2027-04-22",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Coach agile",
-    "salle": "Salle Projet",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE7Ba5-j2",
-    "titre": "[B3AIA] Pilotage & management de projet no-code",
-    "ue": "UE7 - GESTION DE PROJET",
     "date": "2027-04-23",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Coach agile",
-    "salle": "Salle Projet",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE8Ab3",
-    "titre": "[B3] Écoconception de service numérique et sobriété marketing digital",
-    "ue": "UE8 - RSE",
     "date": "2027-04-29",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant RSE",
-    "salle": "Salle 108",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE8Ab5-j1",
-    "titre": "[B3] Workshop éco-conception",
-    "ue": "UE8 - RSE",
     "date": "2027-04-30",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant RSE",
-    "salle": "Salle 108",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE8Ab5-j2",
-    "titre": "[B3] Workshop éco-conception",
-    "ue": "UE8 - RSE",
     "date": "2027-05-13",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant RSE",
-    "salle": "Salle 108",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE8Ba2",
-    "titre": "[B3] Créer un impact positif - Tech for Good",
-    "ue": "UE8 - RSE",
     "date": "2027-05-14",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Intervenant RSE",
-    "salle": "Salle 108",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea1",
-    "titre": "[B3] Initiation au Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-05-20",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j1",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-05-21",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j2",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-05-27",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j3",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-05-28",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j4",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-06-03",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j5",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-06-04",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j6",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-06-14",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j7",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-06-15",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j8",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-06-16",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j9",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-06-17",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   },
   {
     "id": "UE9Ea7-j10",
-    "titre": "[B3AIA] Compétition Lean Startup",
-    "ue": "UE9 - PROFESSIONNALISATION",
     "date": "2027-06-18",
     "heureDebut": "09:00",
-    "heureFin": "17:00",
-    "professeur": "Jury Digital Campus",
-    "salle": "Espace Compétition",
-    "statutFiche": "a_faire"
+    "heureFin": "17:00"
   }
 ]

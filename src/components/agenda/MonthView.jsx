@@ -53,10 +53,10 @@ function MonthView({ date, courses, onCourseClick, onSelectDay }) {
                         key={cours.id}
                         type="button"
                         onClick={() => onCourseClick(cours.id)}
-                        title={`${cours.titre} — ${cours.heureDebut}`}
+                        title={`${cours.titre ?? 'Créneau libre'} — ${cours.heureDebut}`}
                         className={`w-full truncate text-left text-[10px] px-1.5 py-0.5 rounded-md ${ue.badge}`}
                       >
-                        {cours.heureDebut} {cours.titre}
+                        {cours.heureDebut} {cours.titre ?? 'Créneau libre'}
                       </button>
                     )
                   })}

@@ -1,0 +1,162 @@
+[
+  {
+    "titre": "Boost Camp",
+    "ue": "Bootcamp"
+  },
+  {
+    "titre": "[B3] Conférence de rentrée",
+    "ue": "UE0 - HORS UE"
+  },
+  {
+    "titre": "[B3] Partiels S1",
+    "ue": "UE0 - HORS UE"
+  },
+  {
+    "titre": "[B3AIA] Onboarding de spécialité",
+    "ue": "UE0 - HORS UE"
+  },
+  {
+    "titre": "[B3] Droit de la propriété intellectuelle",
+    "ue": "UE1 - CULTURE(S)"
+  },
+  {
+    "titre": "[B3] Analyse des parcours utilisateurs",
+    "ue": "UE2 - DESIGN"
+  },
+  {
+    "titre": "[B3] Concevoir un prototype pour les tests utilisateurs",
+    "ue": "UE2 - DESIGN"
+  },
+  {
+    "titre": "[B3] Dashboard de suivi de campagne",
+    "ue": "UE4 - MARKETING"
+  },
+  {
+    "titre": "[B3] Écosystème digital de marque",
+    "ue": "UE4 - MARKETING"
+  },
+  {
+    "titre": "[B3] Segmenter le marché et les cibles",
+    "ue": "UE4 - MARKETING"
+  },
+  {
+    "titre": "[B3] Stratégie marketing digital",
+    "ue": "UE4 - MARKETING"
+  },
+  {
+    "titre": "[B3] Sécuriser les données utilisateur",
+    "ue": "UE5 - TECHNOLOGIE(S)"
+  },
+  {
+    "titre": "[B3] Solution digitale - Assurer la maintenance",
+    "ue": "UE5 - TECHNOLOGIE(S)"
+  },
+  {
+    "titre": "[B3AIA] Architecture no-code avancée & scalabilité",
+    "ue": "UE5 - TECHNOLOGIE(S)"
+  },
+  {
+    "titre": "[B3AIA] Connexions & services externes no-code",
+    "ue": "UE5 - TECHNOLOGIE(S)"
+  },
+  {
+    "titre": "[B3AIA] Data & analytics no-code",
+    "ue": "UE5 - TECHNOLOGIE(S)"
+  },
+  {
+    "titre": "[B3AIA] FlutterFlow : Applications mobiles no-code",
+    "ue": "UE5 - TECHNOLOGIE(S)"
+  },
+  {
+    "titre": "[B3AIA] Performance & optimisation no-code",
+    "ue": "UE5 - TECHNOLOGIE(S)"
+  },
+  {
+    "titre": "[B3AIA] Sécurité systémique no-code : fil rouge",
+    "ue": "UE5 - TECHNOLOGIE(S)"
+  },
+  {
+    "titre": "[B3AIA] Tests avancés & qualité no-code",
+    "ue": "UE5 - TECHNOLOGIE(S)"
+  },
+  {
+    "titre": "[B3] Automatiser sa veille avec les IA",
+    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES"
+  },
+  {
+    "titre": "[B3] Modélisation et stratégie IA",
+    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES"
+  },
+  {
+    "titre": "[B3AIA] IA pilotée & agents no-code",
+    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES"
+  },
+  {
+    "titre": "[B3AIA] n8n : Orchestration avancée",
+    "ue": "UE6 - INTELLIGENCES ARTIFICIELLES"
+  },
+  {
+    "titre": "[B3] Cahier des charges et création backlog",
+    "ue": "UE7 - GESTION DE PROJET"
+  },
+  {
+    "titre": "[B3] Définir les objectifs stratégiques",
+    "ue": "UE7 - GESTION DE PROJET"
+  },
+  {
+    "titre": "[B3] Gestion de projet agile avec Scrum",
+    "ue": "UE7 - GESTION DE PROJET"
+  },
+  {
+    "titre": "[B3] LEARN - Rappels cahier des charges",
+    "ue": "UE7 - GESTION DE PROJET"
+  },
+  {
+    "titre": "[B3] LEARN - Rappels note de cadrage",
+    "ue": "UE7 - GESTION DE PROJET"
+  },
+  {
+    "titre": "[B3] Pilotage et performance équipe agile",
+    "ue": "UE7 - GESTION DE PROJET"
+  },
+  {
+    "titre": "[B3AIA] Pilotage & management de projet no-code",
+    "ue": "UE7 - GESTION DE PROJET"
+  },
+  {
+    "titre": "[B3] Créer un impact positif - Tech for Good",
+    "ue": "UE8 - RSE"
+  },
+  {
+    "titre": "[B3] Écoconception de service numérique et sobriété marketing digital",
+    "ue": "UE8 - RSE"
+  },
+  {
+    "titre": "[B3] Le dérèglement climatique et les 9 limites planétaires",
+    "ue": "UE8 - RSE"
+  },
+  {
+    "titre": "[B3] Les impacts environnementaux du numérique",
+    "ue": "UE8 - RSE"
+  },
+  {
+    "titre": "[B3] Workshop éco-conception",
+    "ue": "UE8 - RSE"
+  },
+  {
+    "titre": "[B3] Initiation au Lean Startup",
+    "ue": "UE9 - PROFESSIONNALISATION"
+  },
+  {
+    "titre": "[B3] LEARN - Citoyenneté et diversité",
+    "ue": "UE9 - PROFESSIONNALISATION"
+  },
+  {
+    "titre": "[B3AIA] Compétition DC Playoffs",
+    "ue": "UE9 - PROFESSIONNALISATION"
+  },
+  {
+    "titre": "[B3AIA] Compétition Lean Startup",
+    "ue": "UE9 - PROFESSIONNALISATION"
+  }
+]

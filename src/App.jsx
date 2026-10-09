@@ -5,11 +5,12 @@ import WelcomeBanner from './components/WelcomeBanner'
 import AgendaView from './components/AgendaView'
 import StudyView from './components/StudyView'
 import DictionaryView from './components/DictionaryView'
+import LivrablesView from './components/LivrablesView'
 import SakuraAssistant from './components/sakura/SakuraAssistant'
-import mockCourses from './data/mockCourses.json'
 import mockNotes from './data/mockNotes.json'
 import mockFlashcards from './data/mockFlashcards.json'
 import { useSupabaseStore } from './utils/useSupabaseStore'
+import { usePlanning } from './utils/usePlanning'
 import { getCoursesInWeek } from './utils/agendaDates'
 import { migrateLegacyFiches } from './utils/migrateFiches'
 
@@ -28,6 +29,9 @@ const DEFAULT_FICHES = mockNotes.map((n) => ({
 
 const FILTER_TYPES_AGENDA = ['Tout', 'Cours', 'UE']
 const FILTER_TYPES_STUDY = ['Tout', 'Cours', 'UE', 'Thème']
+const FILTER_TYPES_LIVRABLES = ['Tout', 'Cours', 'UE']
+
+const TITRES = { agenda: 'Agenda', 'coin-study': 'Coin Study', dictionnaire: 'Dictionnaire', livrables: 'Exercices & Livrables' }
 
 function App() {
   const [activeItem, setActiveItem] = useState('agenda')
@@ -36,6 +40,7 @@ function App() {
   const [filterValue, setFilterValue] = useState(null)
   const isAgenda = activeItem === 'agenda'
   const isDictionnaire = activeItem === 'dictionnaire'
+  const isLivrables = activeItem === 'livrables'
 
   // Fiches : un seul store pour l'Agenda et le Coin Study (même donnée, voir migrateFiches.js).
   // Persistées en BDD Supabase (cross-device), avec repli/cache LocalStorage automatique en cas
@@ -50,6 +55,10 @@ function App() {
   // Sakura pré-rempli ou directement sur un deck/QCM existant depuis NoteModal.
   const [flashcards, setFlashcards] = useSupabaseStore('flashcards', mockFlashcards)
   const [qcm, setQcm] = useSupabaseStore('qcm', [])
+  // Planning : créneaux vides par défaut, cours choisis à la main (voir usePlanning.js).
+  const { courses, affecterCours, enregistrerEvenement, supprimerEvenement } = usePlanning()
+  // Espace Exercices & Livrables : rendus saisis par l'étudiant (aucune IA).
+  const [livrables, setLivrables] = useSupabaseStore('livrables', [])
   // `sakuraRequest` unifie 3 façons d'ouvrir Sakura depuis une fiche (AUDIT.md J4 — retour
   // formateur "flashcards/QCM accessibles depuis la fiche sans repasser par l'agent") : générer de
   // nouvelles flashcards (seul cas qui a réellement besoin du panel — appel IA), ou aller directement
@@ -88,9 +97,9 @@ function App() {
     setFilterValue(null)
   }, [activeItem])
 
-  const availableFilterTypes = isAgenda ? FILTER_TYPES_AGENDA : FILTER_TYPES_STUDY
-  // mockCourses.length compterait les 72 créneaux de toute l'année : on affiche la charge de la semaine réelle en cours.
-  const coursesCetteSemaine = useMemo(() => getCoursesInWeek(new Date(), mockCourses).length, [])
+  const availableFilterTypes = isAgenda ? FILTER_TYPES_AGENDA : isLivrables ? FILTER_TYPES_LIVRABLES : FILTER_TYPES_STUDY
+  // Charge de la semaine réelle en cours (créneaux remplis ou non).
+  const coursesCetteSemaine = useMemo(() => getCoursesInWeek(new Date(), courses).length, [courses])
   // Dictionnaire (AUDIT.md J2 Tâche 6) : compte les définitions déjà extraites par l'Écriture
   // magique sur toutes les fiches (fiche.redactionIA.definitions), pour le badge du Header.
   const totalDefinitions = useMemo(
@@ -100,14 +109,14 @@ function App() {
 
   const filterValueOptions = useMemo(() => {
     if (filterType === 'UE') {
-      const source = isAgenda ? mockCourses : fiches
-      return Array.from(new Set(source.map((item) => item.ue))).sort()
+      const source = isAgenda ? courses : isLivrables ? livrables : fiches
+      return Array.from(new Set(source.map((item) => item.ue).filter(Boolean))).sort()
     }
     if (filterType === 'Thème' && !isAgenda) {
       return Array.from(new Set(fiches.filter((f) => f.theme).map((item) => item.theme))).sort()
     }
     return []
-  }, [filterType, isAgenda, fiches])
+  }, [filterType, isAgenda, isLivrables, fiches, courses, livrables])
 
   function handleFilterTypeChange(type) {
     setFilterType(type)
@@ -120,13 +129,15 @@ function App() {
 
       <div className="flex-1 flex flex-col min-w-0">
         <Header
-          title={isAgenda ? 'Agenda' : isDictionnaire ? 'Dictionnaire' : 'Coin Study'}
+          title={TITRES[activeItem]}
           badgeText={
             isAgenda
               ? `${coursesCetteSemaine} créneaux cette semaine`
               : isDictionnaire
                 ? `${totalDefinitions} définitions au total`
-                : `${fiches.length} fiches au total`
+                : isLivrables
+                  ? `${livrables.length} rendu(s) rangé(s)`
+                  : `${fiches.length} fiches au total`
           }
           search={search}
           onSearchChange={setSearch}
@@ -141,15 +152,27 @@ function App() {
         <main className="flex-1 p-4 md:p-8 space-y-6">
           {isAgenda ? (
             <>
-              <WelcomeBanner fiches={fiches} onVoirFichesEnAttente={handleVoirFichesEnAttente} />
+              <WelcomeBanner fiches={fiches} courses={courses} onVoirFichesEnAttente={handleVoirFichesEnAttente} />
               <AgendaView
                 search={search}
                 filterType={filterType}
                 filterValue={filterValue}
                 fiches={fiches}
                 onFichesChange={setFiches}
+                courses={courses}
+                onAffecterCours={affecterCours}
+                onSaveEvenement={enregistrerEvenement}
+                onDeleteEvenement={supprimerEvenement}
               />
             </>
+          ) : isLivrables ? (
+            <LivrablesView
+              search={search}
+              filterType={filterType}
+              filterValue={filterValue}
+              livrables={livrables}
+              onLivrablesChange={setLivrables}
+            />
           ) : isDictionnaire ? (
             <DictionaryView
               search={search}

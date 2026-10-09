@@ -4,6 +4,7 @@ import { STATUTS } from '../../utils/statuts'
 import { genererEcritureMagique, aplatirRedaction, ERREUR_MESSAGES } from '../../utils/ecritureMagique'
 import RedactionIACard from './RedactionIACard'
 import PieceJointeFields from '../shared/PieceJointeFields'
+import { lirePiecesJointes } from '../../utils/piecesJointes'
 
 // Modale de lecture/édition complète d'une fiche du Coin Study. État purement local.
 // `flashcards`/`qcm` + `onOuvrirDeck`/`onOuvrirQcm` (AUDIT.md J4 — retour formateur) : accès direct
@@ -18,8 +19,8 @@ function NoteModal({ open, onClose, fiche, ueOptions, onSave, onDelete, onGenere
   const [theme, setTheme] = useState('')
   const [statut, setStatut] = useState('Brouillon')
   const [contenu, setContenu] = useState('')
-  const [lien, setLien] = useState('')
-  const [fichier, setFichier] = useState(null)
+  const [liens, setLiens] = useState([])
+  const [fichiers, setFichiers] = useState([])
   const [confirmingDelete, setConfirmingDelete] = useState(false)
 
   // Écriture magique (AUDIT.md J2 Tâche 7) : `redactionIA` = version déjà validée et enregistrée
@@ -55,8 +56,9 @@ function NoteModal({ open, onClose, fiche, ueOptions, onSave, onDelete, onGenere
     setTheme(fiche.theme ?? '')
     setStatut(fiche.statut ?? 'Brouillon')
     setContenu(fiche.contenu ?? '')
-    setLien(fiche.lien ?? '')
-    setFichier(fiche.fichier ?? null)
+    const pj = lirePiecesJointes(fiche)
+    setLiens(pj.liens)
+    setFichiers(pj.fichiers)
     setConfirmingDelete(false)
     setRedactionIA(fiche.redactionIA ?? null)
     setApercuIA(null)
@@ -84,8 +86,8 @@ function NoteModal({ open, onClose, fiche, ueOptions, onSave, onDelete, onGenere
       statut,
       contenu,
       redactionIA,
-      lien: lien.trim(),
-      fichier,
+      liens,
+      fichiers,
     })
   }
 
@@ -227,7 +229,7 @@ function NoteModal({ open, onClose, fiche, ueOptions, onSave, onDelete, onGenere
             />
           </div>
 
-          <PieceJointeFields lien={lien} onLienChange={setLien} fichier={fichier} onFichierChange={setFichier} />
+          <PieceJointeFields liens={liens} onLiensChange={setLiens} fichiers={fichiers} onFichiersChange={setFichiers} />
 
           {/* Contenu : cadre de saisie brut (édition) OU carte reformulée par IA (lecture) —
               jamais les deux en même temps une fois une mise en forme IA disponible. */}

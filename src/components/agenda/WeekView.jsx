@@ -13,6 +13,23 @@ function timeToSlot(time) {
   return (h - HEURE_DEBUT) * 2 + (m >= 30 ? 1 : 0)
 }
 
+// Éléments simultanés d'un même jour (ex. événement libre posé sur un créneau de cours) :
+// chacun reçoit une sous-colonne `_lane` parmi `_lanes` pour être affiché côte à côte.
+function repartirEnColonnes(items) {
+  const tries = [...items].sort((a, b) => a.heureDebut.localeCompare(b.heureDebut))
+  const finsParLane = []
+  const places = tries.map((item) => {
+    let lane = finsParLane.findIndex((fin) => fin <= item.heureDebut)
+    if (lane === -1) lane = finsParLane.length
+    finsParLane[lane] = item.heureFin
+    return { ...item, _lane: lane }
+  })
+  return places.map((item) => {
+    const chevauchants = places.filter((o) => o.heureDebut < item.heureFin && item.heureDebut < o.heureFin)
+    return { ...item, _lanes: Math.max(...chevauchants.map((o) => o._lane)) + 1 }
+  })
+}
+
 // Grille horaire de la semaine (Lundi → Vendredi, 8h–20h), branchée sur mockCourses.json.
 // Résout, pour chaque jour réel de la semaine affichée, les cours datés ou récurrents (Entreprise) qui s'y appliquent.
 // Sur mobile (< md), la grille horaire à défilement horizontal est peu lisible (retour formateur,
@@ -24,7 +41,7 @@ function WeekView({ referenceDate, courses, fiches, onCourseClick }) {
   const todayISO = toISODate(new Date())
 
   const coursSemaine = semaineDates.flatMap((jourDate, colIdx) =>
-    getCoursesForDate(jourDate, courses).map((c) => ({ ...c, _col: colIdx }))
+    repartirEnColonnes(getCoursesForDate(jourDate, courses)).map((c) => ({ ...c, _col: colIdx }))
   )
 
   const indexAujourdhui = semaineDates.findIndex((d) => toISODate(d) === todayISO)
@@ -73,9 +90,9 @@ function WeekView({ referenceDate, courses, fiches, onCourseClick }) {
                     <div className="w-12 shrink-0 text-sm font-medium text-muted">{cours.heureDebut}</div>
                     <span className={`w-2 h-2 rounded-full shrink-0 ${ue.dot}`} />
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-heading truncate">{cours.titre}</p>
+                      <p className="font-semibold text-heading truncate">{cours.titre ?? 'Créneau libre'}</p>
                       <p className="text-xs text-muted truncate">
-                        {cours.ue} · {cours.heureDebut}–{cours.heureFin}
+                        {cours.ue ?? 'Clique pour choisir un cours'} · {cours.heureDebut}–{cours.heureFin}
                       </p>
                     </div>
                     <span className={`text-[11px] px-2 py-0.5 rounded-full shrink-0 ${STATUS_BADGE[statut]}`}>
@@ -140,8 +157,9 @@ function WeekView({ referenceDate, courses, fiches, onCourseClick }) {
 
             {/* Cours */}
             {coursSemaine.map((cours) => {
-              const start = timeToSlot(cours.heureDebut)
-              const end = timeToSlot(cours.heureFin)
+              // Bornage dans la grille 8h–20h (un événement libre peut déborder ou être très court).
+              const start = Math.min(Math.max(timeToSlot(cours.heureDebut), 0), NB_SLOTS - 1)
+              const end = Math.min(Math.max(timeToSlot(cours.heureFin), start + 1), NB_SLOTS)
               const fiche = fiches[cours.id]
               const statut = getCourseStatus(cours, todayISO)
               return (
@@ -153,8 +171,10 @@ function WeekView({ referenceDate, courses, fiches, onCourseClick }) {
                   style={{
                     gridColumn: cours._col + 2,
                     gridRow: `${start + 1} / span ${end - start}`,
+                    width: `calc(${100 / cours._lanes}% - 4px)`,
+                    marginLeft: `calc(${(100 * cours._lane) / cours._lanes}% + 2px)`,
                   }}
-                  title={`${cours.titre} (${STATUS_LABEL[statut]})`}
+                  title={`${cours.titre ?? 'Créneau libre'} (${STATUS_LABEL[statut]})`}
                 >
                   {fiche && (
                     <FileText
@@ -162,7 +182,7 @@ function WeekView({ referenceDate, courses, fiches, onCourseClick }) {
                       aria-label={`Fiche ${fiche.statut}`}
                     />
                   )}
-                  <p className="font-semibold truncate pr-3">{cours.titre}</p>
+                  <p className="font-semibold truncate pr-3">{cours.titre ?? 'Créneau libre'}</p>
                   <p className="truncate opacity-80">
                     {cours.heureDebut} – {cours.heureFin}
                   </p>

@@ -18,8 +18,16 @@ function hashString(str) {
   return hash
 }
 
+// Événements libres créés par l'étudiant (voir usePlanning.js) : bleu ciel, distinct des cours.
+const EVENEMENT_STYLE = { dot: 'bg-sky-300', badge: 'bg-sky-100 text-sky-800' }
+
+// Créneau vide (pas encore de cours choisi) : contour pointillé neutre.
+const LIBRE_STYLE = { dot: 'border border-dashed border-rose-300', badge: 'border border-dashed border-rose-300 text-muted' }
+
 export function getUeStyle(ue) {
+  if (!ue) return LIBRE_STYLE
   if (ue === 'Entreprise') return ENTREPRISE_STYLE
+  if (ue === 'Événement') return EVENEMENT_STYLE
   const idx = hashString(ue) % UE_PALETTE.length
   return UE_PALETTE[idx]
 }

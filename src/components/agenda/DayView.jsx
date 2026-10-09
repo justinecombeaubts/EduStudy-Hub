@@ -28,11 +28,12 @@ function DayView({ date, courses, fiches, onCourseClick }) {
               <div className="w-14 md:w-16 shrink-0 text-sm font-medium text-muted">{cours.heureDebut}</div>
               <span className={`w-2 h-2 rounded-full shrink-0 ${ue.dot}`} />
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-heading truncate">{cours.titre}</p>
+                <p className="font-semibold text-heading truncate">{cours.titre ?? 'Créneau libre'}</p>
                 <p className="text-xs text-muted truncate">
-                  {cours.ue} · {cours.heureDebut}–{cours.heureFin}
+                  {cours.ue ?? 'Clique pour choisir un cours'} · {cours.heureDebut}–{cours.heureFin}
                   {cours.salle ? ` · ${cours.salle}` : ''}
                 </p>
+                {cours.description && <p className="text-xs text-muted mt-0.5 line-clamp-2">{cours.description}</p>}
               </div>
               <span className={`hidden sm:inline-block text-[11px] px-2 py-0.5 rounded-full shrink-0 ${STATUS_BADGE[statut]}`}>
                 {STATUS_LABEL[statut]}
