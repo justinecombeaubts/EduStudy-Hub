@@ -10,6 +10,10 @@ Agenda de cours & Hub de révision augmenté par l'IA — accompagne l'étudiant
 - 📚 **Coin Study** — organisation et mise au propre des cours, filtrable par Unité d'Enseignement (UE) et par thématique.
 - 🎴 **Professeur Sakura (IA)** — génération de flashcards et de QCM de révision à partir des cours, et mode discussion libre pour réviser.
 
+## Installer l'app sur Windows
+
+EduStudy Hub est une PWA : ouvrir [edustudy-hub.vercel.app](https://edustudy-hub.vercel.app/) dans **Edge** ou **Chrome**, puis cliquer sur « Installer l'app » dans la barre latérale (ou l'icône d'installation dans la barre d'adresse). L'app s'ouvre ensuite dans sa propre fenêtre, depuis le menu Démarrer ou la barre des tâches. Le bouton « Activer les rappels » envoie une notification Windows avant chaque cours, tant que l'app est ouverte.
+
 ## Stack technique
 
 - **Front :** React (Vite) + Tailwind CSS + Lucide React
