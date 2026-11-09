@@ -17,8 +17,3 @@ Historique des jalons validés. Détails opérationnels dans `AUDIT.md` (jetable
 - ✅ **Bornage de la grille + Boost Camp** — l'Entreprise récurrente est bornée du 08/10/2026 au 31/07/2027 (`startDate`/`endDate`) pour ne plus apparaître hors période de formation ; ajout du Boost Camp (31/08 → 02/09/2026) avant la rentrée officielle.
 
 **Reste à faire (hors périmètre J1) :** génération de flashcards IA (bouton placeholder déjà en place dans `NoteModal`).
-
-## App Windows (PWA) — 2026-11-09
-
-- ✅ **App installable** — `public/manifest.webmanifest`, icônes `public/icons/`, service worker `public/sw.js` (interface disponible hors ligne, `/api` jamais mis en cache). Bouton « Installer l'app » dans la Sidebar quand Edge/Chrome le propose ; raccourcis Agenda / Coin Study (`/?vue=…`).
-- ✅ **Rappels de cours** — notifications Windows X min avant chaque créneau école (5 à 60 min, réglable dans la Sidebar), tant que l'app est ouverte (même réduite). Logique dans `src/utils/useCourseReminders.js` ; aucune IA impliquée.
