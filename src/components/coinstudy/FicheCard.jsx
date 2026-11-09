@@ -1,5 +1,6 @@
 import { Check, Sparkles, Link2, Paperclip } from 'lucide-react'
 import { getUeStyle } from '../../utils/ueColors'
+import { compterPiecesJointes } from '../../utils/piecesJointes'
 
 const STATUT_BADGE = {
   'Rédigée': 'bg-rose-100 text-rose-800',
@@ -18,6 +19,7 @@ function formatDate(iso) {
 // En mode sélection (Coin Study), le clic bascule la sélection au lieu d'ouvrir la fiche.
 function FicheCard({ fiche, onClick, selectionMode = false, selected = false, onToggleSelect }) {
   const ue = getUeStyle(fiche.ue)
+  const { nbLiens, nbFichiers } = compterPiecesJointes(fiche)
 
   function handleClick() {
     if (selectionMode) onToggleSelect(fiche.id)
@@ -60,8 +62,8 @@ function FicheCard({ fiche, onClick, selectionMode = false, selected = false, on
 
       <div className="flex items-center gap-2 mt-auto pt-1">
         <p className="text-[11px] text-muted">{formatDate(fiche.date)}</p>
-        {fiche.lien && <Link2 className="w-3 h-3 text-muted" aria-label="Lien externe" />}
-        {fiche.fichier && <Paperclip className="w-3 h-3 text-muted" aria-label="Fichier joint" />}
+        {nbLiens > 0 && <Link2 className="w-3 h-3 text-muted" aria-label={`${nbLiens} lien(s)`} />}
+        {nbFichiers > 0 && <Paperclip className="w-3 h-3 text-muted" aria-label={`${nbFichiers} fichier(s) joint(s)`} />}
       </div>
     </button>
   )

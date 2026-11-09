@@ -964,3 +964,27 @@ Discutées mais pas encore transformées en tâches — à valider avec l'utilis
 - Thème couleur (10 choix)
 - Téléchargement du cours en PDF
 - Rappels équivalents côté UI pure (sans Make), si besoin d'une version sans dépendance externe
+
+---
+
+## Tâche 2026-10-09 — Mode sombre, planning manuel, pièces jointes multiples, Écriture magique, Exercices & Livrables, DA cozy
+
+- [x] **Mode sombre** : les palettes `rose/peach/orange/red/green/amber/fuchsia/stone` pointent vers des variables CSS (plugin dans `tailwind.config.js`) redéfinies en sombre → les `hover:bg-rose-50`, badges pêche, etc. ne restent plus clairs sur fond bordeaux. `color-scheme: dark` (listes déroulantes natives). Bandeau d'accueil : texte sombre sur fond sombre corrigé.
+- [x] **Planning** : `mockCourses.json` ne contient plus que des créneaux vides (date + horaires) ; seuls les créneaux Entreprise restent pré-remplis. Les cours sont choisis à la main dans la liste déroulante (`catalogueCours.json`) via la modale du créneau, affectations persistées dans le store `creneaux` (`usePlanning.js`).
+- [x] **Pièces jointes multiples** : `liens[]` + `fichiers[]` sur fiches (Agenda, Coin Study) et livrables — rétrocompatible avec l'ancien `lien`/`fichier` (`piecesJointes.js`).
+- [x] **Écriture magique** : le prompt interdisait toute info absente des notes, donc aucun terme n'était défini si les notes ne le faisaient pas. Il exige maintenant de repérer et définir tous les termes techniques/sigles (connaissances générales autorisées pour les définitions uniquement), température 0.3. Charte §4 : nouvelle action IA documentée ici ; définitions toujours en état "à relire" + mention "expliqués par l'IA — à vérifier".
+- [x] **Événements libres** : bouton "Nouvel événement" dans l'Agenda (nom, date, horaires, description), store `evenements`, affichés en bleu ciel ; éléments simultanés côte à côte en vue Semaine.
+- [x] **Exercices & Livrables** : nouvel espace (type, UE, cours lié, date de rendu, statut, note, description, liens/fichiers), store `livrables`. Aucune IA.
+- [x] **DA cozy** : typo Quicksand/Nunito, barres en verre dépoli, motif fleurs/étincelles en fond (couleurs inchangées).
+
+**À faire par l'utilisateur :** exécuter `supabase/add-creneaux-livrables.sql` dans Supabase (sinon `creneaux`/`livrables` restent en LocalStorage seul, sans synchro cross-device).
+
+## Tâche 2026-10-09 (suite) — Date/heure + Notes & Observations
+
+- [x] **Date et heure** en direct dans l'en-tête (`Horloge.jsx`), version courte sur petits écrans.
+- [x] **Notes & Observations** : relevé de notes par UE (note / barème / coefficient, type d'épreuve, date, observation), moyennes pondérées sur 20 par UE et générale, épreuves "à venir" exclues des moyennes. Store `releve`. Aucune IA.
+
+- [x] **Suivi ECTS** (onglet ECTS) : 1 cours = 1 ECTS par défaut (UE0 hors UE = 0), compensation au sein de l'UE ; objectif compétences (52) + objectif diplôme UE + activités (60), tous deux modifiables. Objectif annuel (52 par défaut, modifiable) atteint avec les ECTS des UE validées (moyenne ≥ 10/20) ; ECTS par UE saisis à la main, UE manquantes ajoutables ; ECTS d'activités de l'école ajoutés via formulaire avec justification obligatoire, comptés à part (hors objectif). Store `ects`.
+
+**À faire par l'utilisateur :** exécuter `supabase/add-releve.sql` (tables `releve` + `ects`) dans Supabase.
+- [x] **Programme officiel B3 AIA 2026-2027** intégré à `catalogueCours.json` (code, ECTS, semestre, volume par cours). ECTS par UE = somme officielle (UE0 5, UE1 1, UE2 3, UE4 4, UE5 14, UE6 6, UE7 10, UE8 7, UE9 8 = 58) ; objectif compétences 58, diplôme 60 (+ 2 ECTS additionnels : Conférences S1/S2). Coefficient d'une note pré-rempli avec les ECTS du cours ; coefficient 0 autorisé (note hors moyenne).

@@ -40,7 +40,7 @@ export function matchesSearch(item, { search, filterType, filterValue }, fields)
   if (!term) return true
 
   if (filterType === 'Cours') {
-    return item[titre].toLowerCase().includes(term)
+    return (item[titre] ?? '').toLowerCase().includes(term)
   }
 
   const texte = [

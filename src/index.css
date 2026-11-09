@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Inter:wght@400;500;600&family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&family=Source+Code+Pro&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* DA (voir CLAUDE.md) : bordeaux/argent/rose nude, clair ↔ sombre par variables CSS. */
+/* DA (voir CLAUDE.md) : bordeaux/argent/rose nude, clair ↔ sombre par variables CSS.
+   Ambiance "cozy chill" : typo arrondie (Quicksand/Nunito), coins doux. Décor : quart de cercle
+   d'invocation en haut de la colonne menu (CercleInvocation.jsx), argent en clair / doré en sombre (--motif). */
 :root {
   --bg: #f4f4f6;
   --surface: #ffffff;
@@ -16,6 +18,9 @@
   --accent: #8f5159;
   --accent-soft: #e2baac;
   --on-accent: #2a0f17;
+  --glass: rgb(255 255 255 / 0.78);
+  --motif: #9a9ba6; /* argent */
+  color-scheme: light;
 }
 
 :root.dark {
@@ -29,20 +34,74 @@
   --accent: #e2baac;
   --accent-soft: #e2baac;
   --on-accent: #2a0f17;
+  --glass: rgb(58 22 32 / 0.8);
+  --motif: #d6b46a; /* doré */
+  color-scheme: dark;
 }
 
 @layer base {
   body {
-    @apply bg-app text-body font-sans;
+    @apply bg-app text-body font-sans antialiased;
     background-image:
-      radial-gradient(600px circle at 0% 0%, rgb(226 186 172 / 22%), transparent 60%),
-      radial-gradient(600px circle at 100% 0%, rgb(42 15 23 / 12%), transparent 60%);
+      radial-gradient(700px circle at 0% 0%, rgb(226 186 172 / 22%), transparent 60%),
+      radial-gradient(700px circle at 100% 100%, rgb(226 186 172 / 12%), transparent 60%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    @apply font-heading tracking-tight;
+  }
+
+  ::selection {
+    background: rgb(226 186 172 / 0.55);
+  }
+
+  /* Scrollbars douces, cohérentes clair/sombre. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--c-rose-300) / 0.6) transparent;
+  }
+}
+
+@layer components {
+  /* Surface "verre dépoli" pour les barres (Header/Sidebar) : laisse deviner le motif de fond. */
+  /* Décor du haut de la Sidebar (CercleInvocation), derrière les boutons de navigation. */
+  .motif-menu {
+    color: var(--motif);
+    opacity: 0.45;
+    -webkit-mask-image: radial-gradient(circle at 0 0, #000 45%, transparent 100%);
+    mask-image: radial-gradient(circle at 0 0, #000 45%, transparent 100%);
+    pointer-events: none;
+  }
+
+  :root.dark .motif-menu {
+    opacity: 0.4;
+  }
+
+  /* Rotation très lente autour du coin (centre du cercle). */
+  .cercle-invocation {
+    transform-box: view-box;
+    transform-origin: 0 0;
+    animation: cercle-rotation 240s linear infinite;
+  }
+
+  @keyframes cercle-rotation {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cercle-invocation {
+      animation: none;
+    }
+  }
+
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 }

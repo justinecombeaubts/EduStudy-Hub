@@ -4,6 +4,7 @@ import FicheCard from './coinstudy/FicheCard'
 import NoteModal from './coinstudy/NoteModal'
 import { matchesSearch } from '../utils/searchFilter'
 import { STATUTS } from '../utils/statuts'
+import { ecrirePiecesJointes } from '../utils/piecesJointes'
 
 const NOTE_FIELDS = { titre: 'titre', ue: 'ue', theme: 'theme', contenu: 'contenu', date: 'date' }
 
@@ -58,7 +59,7 @@ function StudyView({
   const activeNote = fiches.find((f) => f.id === activeNoteId) ?? null
 
   function handleSaveNote(id, data) {
-    onFichesChange(fiches.map((f) => (f.id === id ? { ...f, ...data } : f)))
+    onFichesChange(fiches.map((f) => (f.id === id ? ecrirePiecesJointes({ ...f, ...data }, data) : f)))
     setActiveNoteId(null)
   }
 

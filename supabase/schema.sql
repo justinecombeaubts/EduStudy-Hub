@@ -39,3 +39,44 @@ create table if not exists public.qcm (
 alter table public.fiches enable row level security;
 alter table public.flashcards enable row level security;
 alter table public.qcm enable row level security;
+
+-- Planning (cours choisis par créneau) + Exercices & Livrables — voir aussi add-creneaux-livrables.sql
+create table if not exists public.creneaux (
+  id text primary key,
+  data jsonb not null,
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.livrables (
+  id text primary key,
+  data jsonb not null,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.creneaux enable row level security;
+alter table public.livrables enable row level security;
+
+create table if not exists public.evenements (
+  id text primary key,
+  data jsonb not null,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.evenements enable row level security;
+
+-- Notes & Observations — voir aussi add-releve.sql
+create table if not exists public.releve (
+  id text primary key,
+  data jsonb not null,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.releve enable row level security;
+
+create table if not exists public.ects (
+  id text primary key,
+  data jsonb not null,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.ects enable row level security;

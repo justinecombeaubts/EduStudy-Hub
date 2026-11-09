@@ -34,7 +34,14 @@ Réponds UNIQUEMENT avec un objet JSON strictement de cette forme (aucun texte n
   "sections": [{ "emoji": "un seul emoji pertinent", "titre": "titre de section", "items": ["point clé 1", "point clé 2"] }],
   "tags": ["mot-clé1", "mot-clé2"]
 }
-Base-toi uniquement sur le contenu fourni, sans ajouter d'information absente des notes.`
+
+Règles pour "definitions" (OBLIGATOIRE, ne jamais laisser ce tableau vide s'il y a du vocabulaire technique) :
+- Repère TOUS les termes techniques, notions clés, jargon métier, sigles et acronymes présents dans les notes (ex. "API", "no-code", "RGPD", "backlog", "webhook"...).
+- Donne pour CHACUN une définition courte (1 à 2 phrases), claire et accessible à un étudiant, même si les notes ne la donnent pas : utilise alors tes connaissances générales, de façon factuelle et prudente.
+- Pour un sigle, commence la définition par sa forme développée.
+- "terme" = le mot tel qu'écrit dans les notes ; pas de doublon.
+
+Règles pour "sections" et "tags" : base-toi uniquement sur le contenu fourni, sans ajouter d'information absente des notes.`
 }
 
 function promptFlashcards({ fiches }) {
@@ -118,7 +125,8 @@ export default async function handler(req, res) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ role: 'user', parts: [{ text: buildPrompt(req.body) }] }],
-        generationConfig: { responseMimeType: 'application/json', temperature: 0.7 },
+        // Mise en forme + définitions : température basse pour des définitions factuelles et stables.
+        generationConfig: { responseMimeType: 'application/json', temperature: req.body.type === 'ecriture-magique' ? 0.3 : 0.7 },
       }),
     })
 
