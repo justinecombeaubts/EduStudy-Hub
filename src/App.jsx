@@ -14,6 +14,8 @@ import { useSupabaseStore } from './utils/useSupabaseStore'
 import { usePlanning } from './utils/usePlanning'
 import { getCoursesInWeek } from './utils/agendaDates'
 import { migrateLegacyFiches } from './utils/migrateFiches'
+import { useCourseReminders } from './utils/useCourseReminders'
+import { usePwaInstall } from './utils/usePwaInstall'
 
 // Fiches Coin Study par défaut (premier lancement, sans donnée locale à migrer) : converties
 // vers le modèle unifié (voir migrateFiches.js) — pas de courseId, pas encore liées à un créneau.
@@ -34,8 +36,14 @@ const FILTER_TYPES_LIVRABLES = ['Tout', 'Cours', 'UE']
 
 const TITRES = { agenda: 'Agenda', 'coin-study': 'Coin Study', dictionnaire: 'Dictionnaire', livrables: 'Exercices & Livrables', releve: 'Notes & Observations' }
 
+// Raccourcis de l'app installée (clic droit sur l'icône Windows) : /?vue=agenda, /?vue=coin-study.
+function vueInitiale() {
+  const vue = new URLSearchParams(window.location.search).get('vue')
+  return vue in TITRES ? vue : 'agenda'
+}
+
 function App() {
-  const [activeItem, setActiveItem] = useState('agenda')
+  const [activeItem, setActiveItem] = useState(vueInitiale)
   const [search, setSearch] = useState('')
   const [filterType, setFilterType] = useState('Tout')
   const [filterValue, setFilterValue] = useState(null)
@@ -59,6 +67,9 @@ function App() {
   const [qcm, setQcm] = useSupabaseStore('qcm', [])
   // Planning : créneaux vides par défaut, cours choisis à la main (voir usePlanning.js).
   const { courses, affecterCours, enregistrerEvenement, supprimerEvenement } = usePlanning()
+  // App Windows (PWA) : rappels de cours en notification + bouton d'installation (Sidebar).
+  const rappels = useCourseReminders(courses)
+  const pwa = usePwaInstall()
   // Espace Exercices & Livrables : rendus saisis par l'étudiant (aucune IA).
   const [livrables, setLivrables] = useSupabaseStore('livrables', [])
   // Relevé de notes (Notes & Observations) : évaluations saisies par l'étudiant (aucune IA).
@@ -131,7 +142,13 @@ function App() {
 
   return (
     <div className="min-h-screen flex">
-      <Sidebar activeItem={activeItem} onSelect={setActiveItem} onOpenSakura={() => sakuraRef.current?.open()} />
+      <Sidebar
+        activeItem={activeItem}
+        onSelect={setActiveItem}
+        onOpenSakura={() => sakuraRef.current?.open()}
+        rappels={rappels}
+        pwa={pwa}
+      />
 
       <div className="flex-1 flex flex-col min-w-0">
         <Header
