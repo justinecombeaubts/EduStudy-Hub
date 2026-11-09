@@ -12,6 +12,8 @@ import mockFlashcards from './data/mockFlashcards.json'
 import { useSupabaseStore } from './utils/useSupabaseStore'
 import { getCoursesInWeek } from './utils/agendaDates'
 import { migrateLegacyFiches } from './utils/migrateFiches'
+import { useCourseReminders } from './utils/useCourseReminders'
+import { usePwaInstall } from './utils/usePwaInstall'
 
 // Fiches Coin Study par défaut (premier lancement, sans donnée locale à migrer) : converties
 // vers le modèle unifié (voir migrateFiches.js) — pas de courseId, pas encore liées à un créneau.
@@ -26,16 +28,26 @@ const DEFAULT_FICHES = mockNotes.map((n) => ({
   date: n.date ?? null,
 }))
 
+// Raccourcis de l'app installée (clic droit sur l'icône Windows) : /?vue=agenda, /?vue=coin-study.
+const VUES = ['agenda', 'coin-study', 'dictionnaire']
+function vueInitiale() {
+  const vue = new URLSearchParams(window.location.search).get('vue')
+  return VUES.includes(vue) ? vue : 'agenda'
+}
+
 const FILTER_TYPES_AGENDA = ['Tout', 'Cours', 'UE']
 const FILTER_TYPES_STUDY = ['Tout', 'Cours', 'UE', 'Thème']
 
 function App() {
-  const [activeItem, setActiveItem] = useState('agenda')
+  const [activeItem, setActiveItem] = useState(vueInitiale)
   const [search, setSearch] = useState('')
   const [filterType, setFilterType] = useState('Tout')
   const [filterValue, setFilterValue] = useState(null)
   const isAgenda = activeItem === 'agenda'
   const isDictionnaire = activeItem === 'dictionnaire'
+  // App Windows (PWA) : rappels de cours en notification + bouton d'installation (Sidebar).
+  const rappels = useCourseReminders(mockCourses)
+  const pwa = usePwaInstall()
 
   // Fiches : un seul store pour l'Agenda et le Coin Study (même donnée, voir migrateFiches.js).
   // Persistées en BDD Supabase (cross-device), avec repli/cache LocalStorage automatique en cas
@@ -116,7 +128,13 @@ function App() {
 
   return (
     <div className="min-h-screen flex bg-app">
-      <Sidebar activeItem={activeItem} onSelect={setActiveItem} onOpenSakura={() => sakuraRef.current?.open()} />
+      <Sidebar
+        activeItem={activeItem}
+        onSelect={setActiveItem}
+        onOpenSakura={() => sakuraRef.current?.open()}
+        rappels={rappels}
+        pwa={pwa}
+      />
 
       <div className="flex-1 flex flex-col min-w-0">
         <Header
